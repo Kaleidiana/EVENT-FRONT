@@ -1,7 +1,7 @@
 .sidebar {
   background-color: rgb(83, 5, 83); /* Sidebar background color */
   color: white; /* Default text color */
-  width: 250px;
+  width: 200px;
   height: 100vh;
   padding: 20px;
   position: fixed;
@@ -15,7 +15,7 @@
 }
 
 .sidebar.collapsed {
-  width: 80px; /* Adjust width when collapsed */
+  width: 20px; /* Adjust width when collapsed */
 }
 
 .toggle-btn {
@@ -30,7 +30,7 @@
 .h2 {
   margin-bottom: 20px;
   transition: opacity 0.3s ease-in-out;
-  color: rgb(46, 211, 5); /* Title color */
+  color: rgb(211, 197, 5); /* Title color */
   font-size: 1.5rem;
 }
 
@@ -45,24 +45,19 @@
   margin-left: 0; /* Remove default margin */
 }
 
-.sidebar.collapsed ul {
-  display: flex;
-  flex-direction: row; /* Display icons in a row when collapsed */
-  justify-content: center; /* Center the icons horizontally */
-}
-
 .sidebar ul li {
   margin-bottom: 10px;
   cursor: pointer;
   display: flex;
+  line-height: 2.5;
   align-items: center;
-  line-height: 3;
   position: relative;
   transition: color 0.3s ease-in-out;
 }
 
 .sidebar.collapsed ul li {
-  margin: 0 10px; /* Adjust spacing between icons when collapsed */
+  justify-content: center; /* Center icons when collapsed */
+  padding: 10px ;
 }
 
 .sidebar ul li:hover {
@@ -74,10 +69,13 @@
   fill: currentColor;
   width: 20px;
   height: 20px;
+  flex-shrink: 0; /* Ensure the icon does not shrink */
 }
 
 .sidebar.collapsed ul li svg {
-  color: black; /* Change icon color to black when collapsed */
+  margin-right: 0; /* Remove margin when sidebar is collapsed */
+  color: rgb(229, 233, 11);
+  
 }
 
 .hide-text {
@@ -87,12 +85,21 @@
 .sidebar ul li a {
   color: white; /* Link text color */
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar ul li a span {
+  margin-left: 10px;
+}
+
+.sidebar.collapsed ul li a span {
+  display: none; /* Hide text when sidebar is collapsed */
 }
 
 .sidebar ul li a:hover {
   color: #ffd700; /* Link text color on hover */
 }
-
 
 
 /*login*/
@@ -347,4 +354,8 @@ html, body {
 .evv{
   font-size: 20px;
   color: yellow;
+}
+
+.userss{
+  margin-left: 70px;
 }

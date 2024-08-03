@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const Dashboard = ({ activeComponent }) => {
   
 
@@ -10,8 +8,6 @@ const Dashboard = ({ activeComponent }) => {
       
         <div>
           <h1>DASHBOARD</h1>
-          <h1>Recent activities- newbookings,eventcreation,show any pending aprovals</h1>
-          <h1>notifications or alerts...display notifications for upcoming deadlines,low event capacity or payment issues</h1>
           
         </div>
       

@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const Users = ({ activeComponent }) => {
   
 
@@ -9,7 +7,7 @@ const Users = ({ activeComponent }) => {
     <div className="users">
       
         <div>
-          <h1>USERS</h1>
+          <h1 className='userss'>USERS</h1>
           
         </div>
       

@@ -8,6 +8,7 @@ const Events = ({ activeComponent }) => {
       title: 'Product Launch',
       image: 'https://images.pexels.com/photos/9391354/pexels-photo-9391354.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Join us for the launch of our exciting new product!',
+      
     },
     {
       id: 2,
