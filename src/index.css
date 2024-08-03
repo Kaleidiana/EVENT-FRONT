@@ -291,11 +291,12 @@ html, body {
 
 .card-actions button {
   margin-right: 8px;
-  padding: 8px 12px;
-  background-color: #007bff;
+  padding: 7px 7px;
+  background-color: #720651;
   color: white;
+  width: 30%;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
