@@ -8,7 +8,6 @@ const Events = ({ activeComponent }) => {
       title: 'Product Launch',
       image: 'https://images.pexels.com/photos/9391354/pexels-photo-9391354.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Join us for the launch of our exciting new product!',
-      
     },
     {
       id: 2,
@@ -53,12 +52,27 @@ const Events = ({ activeComponent }) => {
       content: 'Learn from experts in our upcoming webinar.',
     },
     {
-        id: 9,
-        title: 'Webinar',
-        image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
-        content: 'Learn from experts in our upcoming webinar.',
-      },
+      id: 9,
+      title: 'Webinar',
+      image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
+      content: 'Learn from experts in our upcoming webinar.',
+    },
   ];
+
+  const handleEdit = (id) => {
+    console.log(`Edit card with id: ${id}`);
+    // Implement the edit logic here
+  };
+
+  const handleView = (id) => {
+    console.log(`View card with id: ${id}`);
+    // Implement the view logic here
+  };
+
+  const handleDelete = (id) => {
+    console.log(`Delete card with id: ${id}`);
+    // Implement the delete logic here
+  };
 
   return (
     <div className="events">
@@ -85,7 +99,15 @@ const Events = ({ activeComponent }) => {
           <h1 className='evv'>EVENTS</h1>
           <div className="card-container">
             {cards.map(card => (
-              <Card key={card.id} title={card.title} image={card.image} content={card.content} />
+              <Card 
+                key={card.id} 
+                title={card.title} 
+                image={card.image} 
+                content={card.content}
+                onEdit={() => handleEdit(card.id)}
+                onView={() => handleView(card.id)}
+                onDelete={() => handleDelete(card.id)}
+              />
             ))}
           </div>
         </div>
