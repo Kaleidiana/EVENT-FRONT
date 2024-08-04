@@ -8,6 +8,7 @@ const Dashboard = ({ activeComponent }) => {
       
         <div>
           <h1>DASHBOARD</h1>
+          <h2>THE DASHOARD FUNCTIONS</h2>
           
         </div>
       
