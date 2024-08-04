@@ -8,6 +8,7 @@ import Admin from './Components/Admin';
 import Events from './Components/Events';
 import Users from './Components/Users';
 import Income from './Components/Income';
+import NotFound from './Components/NotFound';
 import './App.css'; // Make sure to include your CSS file
 
 function App() {
@@ -35,6 +36,7 @@ const MainApp = ({ setActiveComponent, activeComponent }) => (
       <Route path="/admin" element={<Admin activeComponent={activeComponent} />} />
       <Route path="/users" element={<Users activeComponent={activeComponent} />} />
       <Route path="/income" element={<Income activeComponent={activeComponent} />} />
+      <Route path="/notfound" element={<Income activeComponent={activeComponent} />} />
     </Routes>
   </div>
 );
