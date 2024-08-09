@@ -1,9 +1,8 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import Card from './Card'; // Ensure this path is correct
 
 const Events = () => {
-  const navigate = useNavigate();
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const cards = [
     {
@@ -71,11 +70,19 @@ const Events = () => {
     },
   ];
 
-  const handleView = (id) => {
-    // Store the selected event ID in localStorage
-    localStorage.setItem('selectedEvent', id);
-    // Redirect to the registration page
-    navigate('/register');
+  const handleView = (event) => {
+    console.log(`View card with id: ${event.id}`);
+    setSelectedEvent(event);
+  };
+
+  const handleEdit = (id) => {
+    console.log(`Edit card with id: ${id}`);
+    // Implement the edit logic here
+  };
+
+  const handleDelete = (id) => {
+    console.log(`Delete card with id: ${id}`);
+    // Implement the delete logic here
   };
 
   return (
@@ -88,11 +95,23 @@ const Events = () => {
             title={card.title} 
             image={card.image} 
             content={card.content}
-            price={card.price}
-            onView={() => handleView(card.id)} // Update the onView handler
+            price={card.price} 
+            onView={() => handleView(card)}
+            onEdit={() => handleEdit(card.id)}
+            onDelete={() => handleDelete(card.id)}
           />
         ))}
       </div>
+
+      {selectedEvent && (
+        <div className="selected-event">
+          <h2>Selected Event</h2>
+          <h3>{selectedEvent.title}</h3>
+          <img src={selectedEvent.image} alt={selectedEvent.title} />
+          <p>{selectedEvent.content}</p>
+          <p>Price: {selectedEvent.price}</p>
+        </div>
+      )}
     </div>
   );
 };
