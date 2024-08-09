@@ -8,70 +8,69 @@ const Home = () => {
       id: 1,
       title: 'CONFERENCES',
       description: 'Professional gatherings for sharing industry knowledge and networking.',
-      image: 'https://www.pexels.com/photo/group-of-people-on-conference-room-1181396/',
-      details: 'Conferences bring together industry professionals, experts, and enthusiasts to discuss recent trends, share research, and network. They typically feature keynote speakers, panel discussions, and breakout sessions.'
+      image: 'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     },
     {
       id: 2,
       title: 'EXHIBITIONS',
       description: 'Showcase of products and services to the public.',
-      image: 'https://www.pexels.com/photo/paintings-in-side-room-1839919/',
-      details: 'Exhibitions provide a platform for companies to showcase their products and services. Attendees can explore various booths, interact with exhibitors, and learn about new innovations.'
+      image: 'https://images.pexels.com/photos/1839919/pexels-photo-1839919.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     },
     {
       id: 3,
       title: 'BUSINESS',
       description: 'Corporate events aimed at enhancing business growth and networking.',
-      image: 'https://www.pexels.com/photo/group-of-people-sitting-on-chair-in-front-of-wooden-table-inside-white-painted-room-1181329/',
-      details: 'Business events include meetings, workshops, and seminars designed to foster business development, share knowledge, and build professional relationships.'
+      image: 'https://images.pexels.com/photos/2041627/pexels-photo-2041627.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     },
     {
       id: 4,
       title: 'MUSIC',
       description: 'Live music events featuring performances by various artists.',
-      image: 'https://www.pexels.com/photo/people-inside-building-while-light-turned-off-1494665/',
-      details: 'Music events include concerts, festivals, and performances where attendees can enjoy live music from a range of genres and artists. These events often feature multiple stages and a vibrant atmosphere.'
+      image: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     },
     {
       id: 5,
       title: 'SPORTS',
       description: 'Competitive events showcasing athletic skills and team spirit.',
-      image: 'https://www.pexels.com/photo/soccer-ball-on-grass-field-during-daytime-46798/',
-      details: 'Sports events include matches, tournaments, and competitions where athletes and teams compete. These events often aim to engage fans and support charitable causes or community initiatives.'
+      image: 'https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     },
     {
       id: 6,
       title: 'FINE-ARTS',
       description: 'Artistic events showcasing various forms of art and performances.',
-      image: 'https://www.pexels.com/photo/composed-glassware-with-wine-and-macaroons-6069749/',
-      details: 'Fine arts events include art exhibitions, gallery openings, and theatrical performances. They celebrate creativity and offer opportunities to appreciate and purchase art.'
+      image: 'https://images.pexels.com/photos/6069749/pexels-photo-6069749.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     },
     {
       id: 7,
       title: 'TECHNOLOGY',
       description: 'Events focused on the latest technological advancements and innovations.',
-      image: 'https://www.pexels.com/photo/silver-imac-displaying-collage-photos-1779487/',
-      details: 'Technology events feature the latest advancements in tech, including product demos, workshops, and talks. These events are ideal for tech enthusiasts and professionals looking to explore new innovations.'
+      image: 'https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
       id: 8,
       title: 'FESTIVALS',
       description: 'Celebrations of cultural and artistic traditions.',
-      image: 'https://www.pexels.com/photo/group-of-people-watching-concert-625644/',
-      details: 'Festivals celebrate various themes, including cultural heritage, arts, and community events. They often include performances, food, and activities that bring people together to enjoy and celebrate.'
+      image: 'https://images.pexels.com/photos/625644/pexels-photo-625644.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     },
     {
       id: 9,
       title: 'GAMING',
       description: 'Events focused on video games, including tournaments and expos.',
-      image: 'https://www.pexels.com/photo/two-people-holding-black-gaming-consoles-442576/',
-      details: 'Gaming events include eSports tournaments, game conventions, and expos where gamers can compete, try out new games, and meet developers and other enthusiasts.'
+      image: 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=600',
+      
     }
   ];
 
   return (
     <div className="home">
-      <h1>Popular Events in EventsPro</h1>
+      <h1 className='popular'>Popular Events in EventsPro</h1>
       <div className="category-container">
         {eventCategories.map(category => (
           <div key={category.id} className="category-card">
