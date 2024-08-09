@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast notifications
 
 function Register() {
   const [formData, setFormData] = useState({
-    username: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: ''
   });
-  const [error] = useState('');
   const navigate = useNavigate(); // useNavigate hook for navigation
 
   const handleChange = (e) => {
@@ -26,22 +27,44 @@ function Register() {
     // Perform registration logic (e.g., API call)
     // For demo purposes, assume successful registration and redirect to login page
     console.log('Form data:', formData);
+
+    // Simulate successful registration
+    toast.success('Registration successful! Redirecting to login...', {
+      position: toast.POSITION.TOP_CENTER
+    });
+
     // Simulate API call or async logic, then redirect
-    navigate('/sidebar'); // Redirect to /login route after registration
+    setTimeout(() => {
+      navigate('/login'); // Redirect to /login route after registration
+    }, 2000); // Delay to show toast message
   };
 
   return (
     <div className="register-container">
       <Form className="register-form" onSubmit={handleSubmit}>
         <h2>Register</h2>
-        <Form.Group controlId="username">
-          <Form.Label>User Name:</Form.Label>
+
+        <Form.Group controlId="firstName">
+          <Form.Label>First Name:</Form.Label>
           <Form.Control
-            name="username"
+            name="firstName"
             type="text"
-            placeholder="Enter Username"
-            value={formData.username}
+            placeholder="Enter First Name"
+            value={formData.firstName}
             onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="lastName">
+          <Form.Label>Last Name:</Form.Label>
+          <Form.Control
+            name="lastName"
+            type="text"
+            placeholder="Enter Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
 
@@ -53,6 +76,7 @@ function Register() {
             placeholder="Enter Email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
         </Form.Group>
 
@@ -64,6 +88,7 @@ function Register() {
             placeholder="Enter Password"
             value={formData.password}
             onChange={handleChange}
+            required
           />
         </Form.Group>
 
@@ -71,12 +96,13 @@ function Register() {
           Register
         </Button>
 
-        {error && <p className="error text-center mt-3">{error}</p>}
-
         <p className="text-center mt-3">
           Already have an account? <Link to="/login" className="button-link">Login</Link>
         </p>
       </Form>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 }

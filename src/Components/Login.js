@@ -1,59 +1,78 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast notifications
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); // useNavigate hook for navigation
 
   const handleLogin = (event) => {
     event.preventDefault();
     // Perform login logic (e.g., API call)
-    // For demo purposes, assume successful login and redirect to main page
-    console.log(`Logged in with Username: ${username}, and Password: ${password}`);
+    // For demo purposes, assume successful login and show toast notification
+    console.log(`Logged in with Email: ${email}, and Password: ${password}`);
+    
+    // Simulate successful login
+    toast.success('Login successful! Redirecting...', {
+      position: toast.POSITION.TOP_CENTER
+    });
+
     // Simulate API call or async logic, then redirect
-    navigate('/sidebar'); // Redirect to /sidebar route after login
+    setTimeout(() => {
+      navigate('/sidebar'); // Redirect to /sidebar route after login
+    }, 2000); // Delay to show toast message
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === 'username') setUsername(value);
+    if (name === 'email') setEmail(value);
     if (name === 'password') setPassword(value);
   };
 
   return (
     <div className="login-container">
-      <div className="login-form">
+      <Form className="login-form" onSubmit={handleLogin}>
         <h2>Login</h2>
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="login-button-container">
-            <button type="submit" className="login-button">Login</button>
-          </div>
-        </form>
-      </div>
+
+        <Form.Group controlId="email">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
+            name="email"
+            type="email"
+            placeholder="Enter Email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="password">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Login
+        </Button>
+
+        <p className="text-center mt-3">
+          Don't have an account? <Link to="/login" className="button-link">Login</Link>
+        </p>
+      </Form>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 }

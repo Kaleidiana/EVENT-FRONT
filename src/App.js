@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Sidebar from './Components/Sidebar';
-import Dashboard from './Components/Dashboard';
-import Admin from './Components/Admin';
+import AdminDash from './Components/AdminDash'; // Ensure proper capitalization
 import Events from './Components/Events';
-import Users from './Components/Users';
+import userD from './Components/usersDash'; // Ensure proper capitalization
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
 import './App.css'; // Make sure to include your CSS file
@@ -19,7 +18,6 @@ function App() {
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        
         <Route path="/*" element={<MainApp setActiveComponent={setActiveComponent} activeComponent={activeComponent} />} />
         <Route path="/" element={<Navigate to="/register" />} />
       </Routes>
@@ -31,12 +29,11 @@ const MainApp = ({ setActiveComponent, activeComponent }) => (
   <div className="App">
     <Sidebar setActiveComponent={setActiveComponent} />
     <Routes>
-    <Route path="/events" element={<Events activeComponent={activeComponent} />} />
-      <Route path="/dashboard" element={<Dashboard activeComponent={activeComponent} />} />
-      <Route path="/admin" element={<Admin activeComponent={activeComponent} />} />
-      <Route path="/users" element={<Users activeComponent={activeComponent} />} />
-      <Route path="/income" element={<Income activeComponent={activeComponent} />} />
-      <Route path="/notfound" element={<Income activeComponent={activeComponent} />} />
+      <Route path="/events" element={<Events />} />
+      <Route path="/adminDash" element={<AdminDash />} />
+      <Route path="/usersDash" element={<UsersDash />} />
+      <Route path="/income" element={<Income />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </div>
 );
