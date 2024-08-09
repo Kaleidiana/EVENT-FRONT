@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Sidebar from './Components/Sidebar';
-import AdminDash from './Components/AdminDash'; // Ensure proper capitalization
+import AdminDash from './Components/AdminDash'; 
 import Events from './Components/Events';
-import userD from './Components/usersDash'; // Ensure proper capitalization
+import UsersDash from './Components/UsersDash'; 
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
-import './App.css'; // Make sure to include your CSS file
+import './App.css'; // Ensure you include your CSS file
 
 function App() {
   const [activeComponent, setActiveComponent] = useState('dashboard'); // Default to 'dashboard'
@@ -30,8 +30,8 @@ const MainApp = ({ setActiveComponent, activeComponent }) => (
     <Sidebar setActiveComponent={setActiveComponent} />
     <Routes>
       <Route path="/events" element={<Events />} />
-      <Route path="/adminDash" element={<AdminDash />} />
-      <Route path="/usersDash" element={<UsersDash />} />
+      <Route path="/AdminDash" element={<AdminDash />} />
+      <Route path="/UsersDash" element={<UsersDash />} />
       <Route path="/income" element={<Income />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

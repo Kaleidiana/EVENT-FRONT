@@ -30,7 +30,7 @@ function Register() {
 
     // Simulate successful registration
     toast.success('Registration successful! Redirecting to login...', {
-      position: toast.POSITION.TOP_CENTER
+      position: 'top-right' // Directly using the string 'top-center'
     });
 
     // Simulate API call or async logic, then redirect

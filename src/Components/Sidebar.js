@@ -22,10 +22,16 @@ const Sidebar = ({ setActiveComponent }) => {
       </div>
       <h2 className={`h2 ${isCollapsed ? 'hidden' : ''}`}>EVENTPRO</h2>
       <ul>
-        <li onClick={() => handleClick('dashboard')}>
-          <Link to="/dashboard" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`}>
+        <li onClick={() => handleClick('AdminDash')}>
+          <Link to="/AdminDash" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`}>
             <FontAwesomeIcon icon={faCalendarDays} />
             <span className={isCollapsed ? 'hide-text' : ''}>DASHBOARD</span>
+          </Link>
+        </li>
+        <li onClick={() => handleClick('UsersDash')}>
+          <Link to="/UsersDash" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`}>
+            <FontAwesomeIcon icon={faUserTie} />
+            <span className={isCollapsed ? 'hide-text' : ''}>ADMIN</span>
           </Link>
         </li>
         <li onClick={() => handleClick('events')}>
@@ -34,12 +40,7 @@ const Sidebar = ({ setActiveComponent }) => {
             <span className={isCollapsed ? 'hide-text' : ''}>EVENTS</span>
           </Link>
         </li>
-        <li onClick={() => handleClick('admin')}>
-          <Link to="/admin" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`}>
-            <FontAwesomeIcon icon={faUserTie} />
-            <span className={isCollapsed ? 'hide-text' : ''}>ADMIN</span>
-          </Link>
-        </li>
+        
         <li onClick={() => handleClick('users')}>
           <Link to="/users" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`}>
             <FontAwesomeIcon icon={faUser} />
