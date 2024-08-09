@@ -4,27 +4,39 @@ const UsersDash = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
 
-  // Fetch all users
+  // Function to fetch users
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch('/api/users');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      setError('Error fetching users: ' + error.message);
+    }
+  };
+
+  // Fetch users data immediately when component renders
   useEffect(() => {
-    fetch('/api/users')
-      .then((response) => response.json())
-      .then((data) => setUsers(data))
-      .catch((error) => setError('Error fetching users: ' + error.message));
+    fetchUsers();
   }, []);
 
   // Function to delete a user
-  const handleDelete = (userId) => {
-    fetch(`/api/users/${userId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          setUsers(users.filter(user => user._id !== userId));
-        } else {
-          setError('Failed to delete user');
-        }
-      })
-      .catch((error) => setError('Error deleting user: ' + error.message));
+  const handleDelete = async (userId) => {
+    try {
+      const response = await fetch(`/api/users/${userId}`, {
+        method: 'DELETE',
+      });
+      if (response.status === 204) {
+        setUsers(users.filter(user => user._id !== userId));
+      } else {
+        setError('Failed to delete user');
+      }
+    } catch (error) {
+      setError('Error deleting user: ' + error.message);
+    }
   };
 
   return (
