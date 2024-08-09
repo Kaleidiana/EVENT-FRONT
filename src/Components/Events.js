@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from './Card';
+import Card from './Card'; // Ensure this path is correct
 
-const Events = ({ activeComponent }) => {
+const Events = () => {
   const cards = [
     {
       id: 1,
@@ -76,43 +76,20 @@ const Events = ({ activeComponent }) => {
 
   return (
     <div className="events">
-      {activeComponent === 'AdminDash' && (
-        <div>
-          <h1>Admin</h1>
-          {/* Render admin-specific content here */}
-        </div>
-      )}
-      {activeComponent === 'UsersDash' && (
-        <div>
-          <h1>Users</h1>
-          {/* Render users content here */}
-        </div>
-      )}
-
-      {activeComponent === 'events' && (
-        <div>
-          <h1 className='evv'>EVENTS</h1>
-          <div className="card-container">
-            {cards.map(card => (
-              <Card 
-                key={card.id} 
-                title={card.title} 
-                image={card.image} 
-                content={card.content}
-                onEdit={() => handleEdit(card.id)}
-                onView={() => handleView(card.id)}
-                onDelete={() => handleDelete(card.id)}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-      {activeComponent === 'income' && (
-        <div>
-          <h1>Income</h1>
-          {/* Render income content here */}
-        </div>
-      )}
+      <h1 className='evv'>EVENTS</h1>
+      <div className="card-container">
+        {cards.map(card => (
+          <Card 
+            key={card.id} 
+            title={card.title} 
+            image={card.image} 
+            content={card.content}
+            onEdit={() => handleEdit(card.id)}
+            onView={() => handleView(card.id)}
+            onDelete={() => handleDelete(card.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

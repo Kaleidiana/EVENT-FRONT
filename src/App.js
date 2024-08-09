@@ -8,18 +8,16 @@ import Events from './Components/Events';
 import UsersDash from './Components/UsersDash'; 
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
-import './App.css'; // Ensure you include your CSS file
+import './App.css';
 
 function App() {
-  const [activeComponent, setActiveComponent] = useState(''); // Default empty or a suitable default
+  const [activeComponent, setActiveComponent] = useState('');
 
   return (
     <Router>
       <Routes>
-        {/* Routes that don't need Sidebar */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* Routes that need Sidebar */}
         <Route 
           path="/*" 
           element={
@@ -27,7 +25,6 @@ function App() {
               <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
               <div className="content">
                 <Routes>
-                  <Route path="/Sidebar" element={<Sidebar />} />
                   <Route path="/AdminDash" element={<AdminDash />} />
                   <Route path="/UsersDash" element={<UsersDash />} />
                   <Route path="/events" element={<Events />} />
@@ -38,7 +35,6 @@ function App() {
             </div>
           } 
         />
-        {/* Default redirect */}
         <Route path="/" element={<Navigate to="/register" />} />
       </Routes>
     </Router>

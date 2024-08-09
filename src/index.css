@@ -350,16 +350,16 @@ html, body {
   font-size: 18px;
   margin-bottom: 10px;
   color: #333;
+  text-decoration: none;
 }
 
 .card-text {
   font-size: 14px;
   color: #666;
 }
-
 .events{
   margin-left: 120px;
-  color: red;
+  
 }
 .evv{
   font-size: 20px;
