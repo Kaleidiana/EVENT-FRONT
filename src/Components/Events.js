@@ -76,24 +76,19 @@ const Events = ({ activeComponent }) => {
 
   return (
     <div className="events">
-      {activeComponent === 'dashboard' && (
-        <div>
-          <h1>Dashboard</h1>
-          {/* Render dashboard-specific content here */}
-        </div>
-      )}
-      {activeComponent === 'admin' && (
+      {activeComponent === 'AdminDash' && (
         <div>
           <h1>Admin</h1>
-          {/* Render admin content here */}
+          {/* Render admin-specific content here */}
         </div>
       )}
-      {activeComponent === 'users' && (
+      {activeComponent === 'UsersDash' && (
         <div>
           <h1>Users</h1>
           {/* Render users content here */}
         </div>
       )}
+
       {activeComponent === 'events' && (
         <div>
           <h1 className='evv'>EVENTS</h1>

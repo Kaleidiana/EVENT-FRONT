@@ -15,21 +15,32 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
-        <div className="content">
-          <Routes>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/AdminDash" element={<AdminDash />} />
-            <Route path="/UsersDash" element={<UsersDash />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/income" element={<Income />} />
-            <Route path="/" element={<Navigate to="/register" />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </div>
+      <Routes>
+        {/* Routes that don't need Sidebar */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        {/* Routes that need Sidebar */}
+        <Route 
+          path="/*" 
+          element={
+            <div className="App">
+              <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
+              <div className="content">
+                <Routes>
+                  <Route path="/Sidebar" element={<Sidebar />} />
+                  <Route path="/AdminDash" element={<AdminDash />} />
+                  <Route path="/UsersDash" element={<UsersDash />} />
+                  <Route path="/events" element={<Events />} />
+                  <Route path="/income" element={<Income />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </div>
+            </div>
+          } 
+        />
+        {/* Default redirect */}
+        <Route path="/" element={<Navigate to="/register" />} />
+      </Routes>
     </Router>
   );
 }
