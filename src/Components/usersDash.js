@@ -1,64 +1,49 @@
-// UsersDash.js
-import React, { useState, useEffect } from 'react';
-import Card from './Card'; // Import the Card component
+import React from 'react';
 
 const UsersDash = () => {
-  const [profile, setProfile] = useState(null);
-  const [events, setEvents] = useState([]);
-  const [error, setError] = useState(null);
-
-  // Fetch user profile
-  useEffect(() => {
-    fetch('/api/users/profile')
-      .then(response => response.json())
-      .then(data => {
-        setProfile(data);
-      })
-      .catch(error => {
-        setError('Error fetching profile: ' + error.message);
-      });
-  }, []);
-
-  // Fetch user events
-  useEffect(() => {
-    fetch('/api/users/events')
-      .then(response => response.json())
-      .then(data => {
-        setEvents(data);
-      })
-      .catch(error => {
-        setError('Error fetching events: ' + error.message);
-      });
-  }, []);
-
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">User Dashboard</h1>
-      {error && <p className="text-red-500">{error}</p>}
+    <div className="users-dash">
+      <h1>User Dashboard</h1>
       
-      {profile && (
-        <div>
-          <h2 className="text-xl font-bold mb-2">Profile</h2>
-          <p><strong>Name:</strong> {profile.firstName} {profile.lastName}</p>
-          <p><strong>Email:</strong> {profile.email}</p>
-          {/* Add other profile details as needed */}
-        </div>
-      )}
+      <section className="profile-info">
+        <h2>Profile Information</h2>
+        {/* Display user profile details */}
+      </section>
 
-      <h2 className="text-xl font-bold mt-6 mb-2">My Events</h2>
-      <div className="card-container">
-        {events.map(event => (
-          <Card 
-            key={event._id}
-            title={event.title}
-            image={event.image || '/path/to/default/image.jpg'} // Provide a default image if none exists
-            content={event.description}
-            onEdit={() => console.log('Edit', event._id)} // Add edit functionality if needed
-            onView={() => console.log('View', event._id)} // Add view functionality if needed
-            onDelete={() => console.log('Delete', event._id)} // You might not want delete functionality for users
-          />
-        ))}
-      </div>
+      <section className="dashboard-overview">
+        <h2>Dashboard Overview</h2>
+        {/* Summary of upcoming events or important notifications */}
+      </section>
+
+      <section className="events">
+        <h2>Events</h2>
+        {/* List and manage events */}
+      </section>
+
+      <section className="tasks">
+        <h2>Tasks or Assignments</h2>
+        {/* Display and track tasks or assignments */}
+      </section>
+
+      <section className="resources">
+        <h2>Resources</h2>
+        {/* Access to resources or materials */}
+      </section>
+
+      <section className="messages">
+        <h2>Messages</h2>
+        {/* Internal messaging system */}
+      </section>
+
+      <section className="activity-log">
+        <h2>Activity Log</h2>
+        {/* User’s activity history */}
+      </section>
+
+      <section className="support">
+        <h2>Support</h2>
+        {/* Access to support or helpdesk */}
+      </section>
     </div>
   );
 };
