@@ -11,31 +11,27 @@ import NotFound from './Components/NotFound';
 import './App.css'; // Ensure you include your CSS file
 
 function App() {
-  const [activeComponent, setActiveComponent] = useState('dashboard'); // Default to 'dashboard'
+  const [activeComponent, setActiveComponent] = useState(''); // Default empty or a suitable default
 
   return (
     <Router>
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<MainApp setActiveComponent={setActiveComponent} activeComponent={activeComponent} />} />
-        <Route path="/" element={<Navigate to="/register" />} />
-      </Routes>
+      <div className="App">
+        <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
+        <div className="content">
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/AdminDash" element={<AdminDash />} />
+            <Route path="/UsersDash" element={<UsersDash />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/income" element={<Income />} />
+            <Route path="/" element={<Navigate to="/register" />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }
-
-const MainApp = ({ setActiveComponent, activeComponent }) => (
-  <div className="App">
-    <Sidebar setActiveComponent={setActiveComponent} />
-    <Routes>
-      <Route path="/events" element={<Events />} />
-      <Route path="/AdminDash" element={<AdminDash />} />
-      <Route path="/UsersDash" element={<UsersDash />} />
-      <Route path="/income" element={<Income />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </div>
-);
 
 export default App;

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCalendarDays, faUserTie, faCalendarAlt, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 
-const Sidebar = ({ setActiveComponent }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+const Sidebar = ({ setActiveComponent, activeComponent }) => {
+  const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -18,25 +18,41 @@ const Sidebar = ({ setActiveComponent }) => {
       <h2 className={`h2 ${isCollapsed ? 'hidden' : ''}`}>EVENTPRO</h2>
       <ul>
         <li>
-          <Link to="/AdminDash" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('AdminDash')}>
+          <Link 
+            to="/AdminDash" 
+            className={`nav-link ${activeComponent === 'AdminDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
+            onClick={() => setActiveComponent('AdminDash')}
+          >
             <FontAwesomeIcon icon={faCalendarDays} />
             <span className={isCollapsed ? 'hide-text' : ''}>ADMIN</span>
           </Link>
         </li>
         <li>
-          <Link to="/UsersDash" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('UsersDash')}>
+          <Link 
+            to="/UsersDash" 
+            className={`nav-link ${activeComponent === 'UsersDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
+            onClick={() => setActiveComponent('UsersDash')}
+          >
             <FontAwesomeIcon icon={faUserTie} />
             <span className={isCollapsed ? 'hide-text' : ''}>USER</span>
           </Link>
         </li>
         <li>
-          <Link to="/events" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('events')}>
+          <Link 
+            to="/events" 
+            className={`nav-link ${activeComponent === 'events' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
+            onClick={() => setActiveComponent('events')}
+          >
             <FontAwesomeIcon icon={faCalendarAlt} />
             <span className={isCollapsed ? 'hide-text' : ''}>EVENTS</span>
           </Link>
         </li>
         <li>
-          <Link to="/income" className={`nav-link ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('income')}>
+          <Link 
+            to="/income" 
+            className={`nav-link ${activeComponent === 'income' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
+            onClick={() => setActiveComponent('income')}
+          >
             <FontAwesomeIcon icon={faMoneyBillWave} />
             <span className={isCollapsed ? 'hide-text' : ''}>INCOME</span>
           </Link>
