@@ -19,19 +19,22 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Sidebar />
+        <Sidebar /> {/* Sidebar always visible */}
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             {userRole === 'admin' ? (
-              <Route path="/dashboard" element={<AdminDash />} />
+              <Route path="/AdminDash" element={<AdminDash />} />
             ) : (
-              <Route path="/dashboard" element={<UsersDash />} />
+              <Route path="/UsersDash" element={<UsersDash />} />
             )}
             <Route path="/events" element={<Events />} />
-            <Route path="/income" element={<ProtectedRoutes allowedRoles={['admin']} element={<Income />} />} />
+            <Route
+              path="/income"
+              element={<ProtectedRoutes allowedRoles={['admin']} element={<Income />} />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

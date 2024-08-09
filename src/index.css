@@ -426,3 +426,29 @@ html, body {
   color:hsl(323, 98%, 33%);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+/*USERS DASH/
+
+/* UsersDash.css */
+.users-dash {
+  padding: 20px;
+}
+
+.users-dash h1 {
+  margin-bottom: 20px;
+}
+
+.users-dash table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-left: 13%;
+}
+
+.users-dash th, .users-dash td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.users-dash th {
+  background-color: #f4f4f4;
+}
