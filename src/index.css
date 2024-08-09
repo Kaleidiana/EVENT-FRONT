@@ -336,6 +336,7 @@ html, body {
 
 .card:hover {
   transform: scale(1.05);
+  background-color: wheat;
 }
 
 .card img {
