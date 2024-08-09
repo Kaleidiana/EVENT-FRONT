@@ -49,12 +49,12 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
         </li>
         <li>
           <Link 
-            to="/income" 
+            to="/createEvent" 
             className={`nav-link ${activeComponent === 'income' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
             onClick={() => setActiveComponent('income')}
           >
             <FontAwesomeIcon icon={faMoneyBillWave} />
-            <span className={isCollapsed ? 'hide-text' : ''}>INCOME</span>
+            <span className={isCollapsed ? 'hide-text' : ''}>CREATE-EVENT</span>
           </Link>
         </li>
       </ul>
