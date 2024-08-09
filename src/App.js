@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './Context/authContext'; // Ensure path is correct
+import { AuthProvider } from './Components/Context/authContext'; // Ensure path is correct
 import Home from './Components/Home';
 import Register from './Components/Register';
 import Login from './Components/Login';
