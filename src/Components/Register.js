@@ -1,14 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { EventContext } from './Context/EventContext'; // Ensure path is correct
-
+import Swal from 'sweetalert2'; // Ensure SweetAlert2 is installed and imported
 
 const Register = () => {
-  const { selectedEvent, selectEvent } = useContext(EventContext);
+  const { selectedEvent } = useContext(EventContext);
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
-    gender: '',
-    event: selectedEvent ? selectedEvent.id : '' // default to selected event id
+    gender: ''
   });
 
   const handleChange = (e) => {
@@ -26,21 +25,29 @@ const Register = () => {
     const response = await fetch('/users/registerUser', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({ ...formData, event: selectedEvent })
     });
 
     if (response.ok) {
-      // Handle success
-      alert('Registration successful');
+      Swal.fire({
+        title: 'Success!',
+        text: 'Registration completed successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
     } else {
-      // Handle error
-      alert('Registration failed');
+      Swal.fire({
+        title: 'Error!',
+        text: 'There was an issue with your registration.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
     }
   };
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
+      <h1 className="register-heading">Register</h1>
       <form onSubmit={handleSubmit} className="register-form">
         <input
           type="text"
@@ -49,6 +56,7 @@ const Register = () => {
           onChange={handleChange}
           placeholder="First Name"
           required
+          className="register-input"
         />
         <input
           type="text"
@@ -57,19 +65,31 @@ const Register = () => {
           onChange={handleChange}
           placeholder="Last Name"
           required
+          className="register-input"
         />
-        <input
-          type="text"
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-          placeholder="Gender"
-        />
-        <div className="event-selection">
-          <button type="button" onClick={() => selectEvent(1)}>Select Event 1</button>
-          <button type="button" onClick={() => selectEvent(2)}>Select Event 2</button>
+        <div className="gender-select">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="Male"
+              checked={formData.gender === 'Male'}
+              onChange={handleChange}
+            />
+            Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="Female"
+              checked={formData.gender === 'Female'}
+              onChange={handleChange}
+            />
+            Female
+          </label>
         </div>
-        <button type="submit" className="submit-button">Register</button>
+        <button type="submit" className="register-button">Register</button>
       </form>
     </div>
   );
