@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from './Card'; // Ensure this path is correct
 
 const Events = () => {
+  const navigate = useNavigate();
+
   const cards = [
     {
       id: 1,
@@ -68,19 +71,11 @@ const Events = () => {
     },
   ];
 
-  const handleEdit = (id) => {
-    console.log(`Edit card with id: ${id}`);
-    // Implement the edit logic here
-  };
-
   const handleView = (id) => {
-    console.log(`View card with id: ${id}`);
-    // Implement the view logic here
-  };
-
-  const handleDelete = (id) => {
-    console.log(`Delete card with id: ${id}`);
-    // Implement the delete logic here
+    // Store the selected event ID in localStorage
+    localStorage.setItem('selectedEvent', id);
+    // Redirect to the registration page
+    navigate('/register');
   };
 
   return (
@@ -93,10 +88,8 @@ const Events = () => {
             title={card.title} 
             image={card.image} 
             content={card.content}
-            price={card.price} // Pass the price prop
-            onEdit={() => handleEdit(card.id)}
-            onView={() => handleView(card.id)}
-            onDelete={() => handleDelete(card.id)}
+            price={card.price}
+            onView={() => handleView(card.id)} // Update the onView handler
           />
         ))}
       </div>

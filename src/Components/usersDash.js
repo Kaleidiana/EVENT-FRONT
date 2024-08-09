@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-
-// Example data, you can replace this with actual data from your API or state
-const initialUsers = [
-  { name: 'John Doe', gender: 'Male', eventChosen: 'Event A', amount: '$100' },
-  { name: 'Jane Smith', gender: 'Female', eventChosen: 'Event B', amount: '$150' },
-  // Add more user data as needed
-];
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function UsersDash() {
-  const [users, setUsers] = useState(initialUsers);
+  const [users, setUsers] = useState([]);
 
-  const deleteUser = (index) => {
-    const updatedUsers = users.filter((_, i) => i !== index);
-    setUsers(updatedUsers);
-  };
+  useEffect(() => {
+    axios.get('/users/getAllUsers')
+      .then(response => {
+        setUsers(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the users!', error);
+      });
+  }, []);
 
   return (
     <div className="users-dash">
@@ -25,19 +24,15 @@ function UsersDash() {
             <th>Gender</th>
             <th>Event Chosen</th>
             <th>Amount</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user, index) => (
             <tr key={index}>
-              <td>{user.name}</td>
+              <td>{user.firstname} {user.lastname}</td>
               <td>{user.gender}</td>
-              <td>{user.eventChosen}</td>
+              <td>{user.selectedEvent ? user.selectedEvent.title : 'No event selected'}</td>
               <td>{user.amount}</td>
-              <td>
-                <button onClick={() => deleteUser(index)}>Delete</button>
-              </td>
             </tr>
           ))}
         </tbody>
