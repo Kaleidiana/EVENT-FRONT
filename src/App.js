@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import Register from './Components/Register';
 import Login from './Components/Login';
@@ -10,53 +10,44 @@ import Events from './Components/Events';
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
 import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure import path is correct
-import { ToastContainer } from 'react-toastify'; // Import ToastContainer
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast notifications
 import './App.css';
 
-// Retrieve the user role and authentication status from local storage
+// Retrieve the user role from local storage
 const userRole = localStorage.getItem('userRole');
-const isAuthenticated = !!localStorage.getItem('authToken');
 
 function App() {
   return (
     <Router>
-      <ToastContainer /> {/* Add ToastContainer here */}
       <Routes>
-        {/* Public Routes */}
+        {/* Routes for Home, Register, and Login */}
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={isAuthenticated ? <Navigate to="/" /> : <Register />} />
-        <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Routes with Sidebar */}
-        {isAuthenticated && (
-          <Route
-            path="/*"
-            element={
-              <div className="App">
-                <Sidebar />
-                <div className="content">
-                  <Routes>
-                    {userRole === 'admin' ? (
-                      <Route path="AdminDash" element={<AdminDash />} />
-                    ) : (
-                      <Route path="UsersDash" element={<UsersDash />} />
-                    )}
-                    <Route path="events" element={<Events />} />
-                    <Route
-                      path="income"
-                      element={<ProtectedRoutes allowedRoles={['admin']} element={<Income />} />}
-                    />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </div>
+        <Route
+          path="/*"
+          element={
+            <div className="App">
+              <Sidebar />
+              <div className="content">
+                <Routes>
+                  {userRole === 'admin' ? (
+                    <Route path="AdminDash" element={<AdminDash />} />
+                  ) : (
+                    <Route path="UsersDash" element={<UsersDash />} />
+                  )}
+                  <Route path="events" element={<Events />} />
+                  <Route
+                    path="income"
+                    element={<ProtectedRoutes allowedRoles={['admin']} element={<Income />} />}
+                  />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
               </div>
-            }
-          />
-        )}
-
-        {/* Redirect to login if not authenticated */}
-        {!isAuthenticated && <Route path="*" element={<Navigate to="/login" />} />}
+            </div>
+          }
+        />
       </Routes>
     </Router>
   );
