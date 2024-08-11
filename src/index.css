@@ -192,6 +192,7 @@ button:hover {
   margin: 0;
   padding: 0;
 }
+
 html, body {
   height: 100%;
   margin: 0;
@@ -199,7 +200,7 @@ html, body {
 }
 
 .register-form {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   width: 400px;
   padding: 20px;
   background-color: #ffffff; /* White background */
@@ -230,7 +231,7 @@ html, body {
 }
 
 .register-form button[type="submit"]:hover {
-  background-color: #b3009b; 
+  background-color: #b3009b;
 }
 
 .register-form .button-link {
@@ -242,8 +243,8 @@ html, body {
 
 .register-form .button-link:hover {
   text-decoration: none;
-  
 }
+
 /*Dashboard*/
 /* App.css */
 
