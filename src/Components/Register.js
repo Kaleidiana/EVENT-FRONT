@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
@@ -33,16 +33,45 @@ const Register = () => {
       if (!response.ok) {
         const errorText = await response.text(); // Read response as text for better error logging
         console.error('Registration failed:', errorText);
-        toast.error('There was an issue with your registration.');
+        toast.error('There was an issue with your registration.', {
+          position: 'top-right',
+          className: 'toast-message', // Custom class for additional styling
+          style: {
+            width: 'auto', // Set width to auto to fit content
+            whiteSpace: 'nowrap',
+            marginLeft: '100px', // Prevents wrapping to the next line
+            textAlign: 'center', // Center the text
+          },
+        });
       } else {
         const successData = await response.json();
         console.log('Registration successful:', successData);
-        toast.success('Registration successful!');
-        navigate('/login'); // Redirect to login page after successful registration
+        toast.success('Registration successful!', {
+          position: 'top-right',
+          className: 'toast-message', // Custom class for additional styling
+          style: {
+            width: 'auto', // Set width to auto to fit content
+            whiteSpace: 'nowrap',
+            marginLeft: '100px', // Prevents wrapping to the next line
+            textAlign: 'center', // Center the text
+          },
+        });
+        setTimeout(() => {
+          navigate('/login'); // Redirect to login page after successful registration
+        }, 2000); // Delay to show toast message
       }
     } catch (error) {
       console.error('An error occurred:', error);
-      toast.error('There was an issue with your registration.');
+      toast.error('There was an issue with your registration.', {
+        position: 'top-right',
+        className: 'toast-message', // Custom class for additional styling
+        style: {
+          width: 'auto', // Set width to auto to fit content
+          whiteSpace: 'nowrap',
+          marginLeft: '100px', // Prevents wrapping to the next line
+          textAlign: 'center', // Center the text
+        },
+      });
     }
   };
 
@@ -97,16 +126,17 @@ const Register = () => {
                   onChange={handleChange}
                 />
                 Female
-                </label>
+              </label>
             </div>
           </div>
           <button type="submit">Register</button>
         </form>
         <p>Already have an account? <a href="/login">Login</a></p>
       </div>
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };
 
 export default Register;
-
