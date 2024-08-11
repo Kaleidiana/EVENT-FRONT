@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { ToastContainer, toast } from 'react-toastify';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -25,21 +24,21 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/users/registerUser', {
+      const response = await fetch('http://localhost:4000/api/users/registerUser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Registration failed:', errorData);
+        const errorText = await response.text(); // Read response as text for better error logging
+        console.error('Registration failed:', errorText);
         toast.error('There was an issue with your registration.');
       } else {
         const successData = await response.json();
         console.log('Registration successful:', successData);
         toast.success('Registration successful!');
-        navigate('/dashboard'); // Redirect to the dashboard page after successful registration
+        navigate('/login'); // Redirect to login page after successful registration
       }
     } catch (error) {
       console.error('An error occurred:', error);
@@ -98,15 +97,16 @@ const Register = () => {
                   onChange={handleChange}
                 />
                 Female
-              </label>
+                </label>
             </div>
           </div>
           <button type="submit">Register</button>
         </form>
-        <p>Already have an account? <a href="/login" className="button-link">Login</a></p> {/* Link to login page */}
+        <p>Already have an account? <a href="/login">Login</a></p>
       </div>
     </div>
   );
 };
 
 export default Register;
+
