@@ -6,7 +6,6 @@ import Login from './Components/Login';
 import Sidebar from './Components/Sidebar';
 import AdminDash from './Components/AdminDash';
 import UsersDash from './Components/UsersDash';
-import Sidebar from './Components/Sidebar';
 import Income from './Components/Income';
 import Events from './Components/Events';
 import NotFound from './Components/NotFound';
