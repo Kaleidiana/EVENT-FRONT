@@ -11,7 +11,7 @@ import Income from './Components/Income';
 import Events from './Components/Events';
 import NotFound from './Components/NotFound';
 import ProtectedRoutes from './Components/ProtectedRoutes';
-import SidebarLayout from './Components/SidebarLayout';
+import SidebarLayout from './Components/Sidebar';
 import './App.css';
 
 const userRole = localStorage.getItem('userRole');
