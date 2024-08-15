@@ -182,18 +182,20 @@ button:hover {
 /* Register.css */
 
 .register-container {
-  background: url('https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
   width: 100vw; /* Full viewport width */
   margin: 0;
+  backdrop-filter: blur(5px);
+  background-color: #ffffff25;
   padding: 0;
 }
 
 html, body {
+  background: url('https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+  background-size: cover;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -203,9 +205,11 @@ html, body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   width: 400px;
   padding: 20px;
-  background-color: #ffffff; /* White background */
+  background-color: #0f3afd94; /* White background */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  color: white;
+  box-shadow: 1px 1px 10px #8b8383;
+  
 }
 
 .register-form h2 {
