@@ -553,4 +553,33 @@ html, body {
 .users-dash th {
   background-color: #f4f4f4;
 }
+/*EVENTS PAGE*/
+.events-page {
+  background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); /* Update with your image path */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-area {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 600px;
+  color: white;
+}
+
+.page-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.page-description {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
 
