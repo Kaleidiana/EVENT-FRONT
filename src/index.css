@@ -100,6 +100,15 @@
 .sidebar ul li a:hover {
   color: #ffd700; /* Link text color on hover */
 }
+.content {
+  margin-left: 70px; /* Sidebar width */
+  padding: 20px; /* Adjust padding as needed */
+  overflow: auto;
+}
+
+.sidebar.collapsed ~ .content {
+  margin-left: 20px; /* Adjust for collapsed sidebar */
+}
 
 /* Main Content Styles */
 .main-content {
@@ -377,6 +386,8 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  
  
 }
 
