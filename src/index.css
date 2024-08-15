@@ -359,7 +359,7 @@ html, body {
   padding: 7px 7px;
   background-color: #d3269f;
   color: white;
-  width: 30%;
+  width: 60px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -383,23 +383,22 @@ html, body {
 }
 
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  grid-template-columns: repeat(4, 1fr);
-  
- 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 50px; /* Space between the cards */
+  height: 30%;
+  margin: 20px; /* Container margin */
+  margin-right: 70px;
 }
 
 .card {
-  width: calc(25% - 20px);
+  width: 100%; /* Take full width of the grid column */
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
 }
 
 .card:hover {
@@ -422,7 +421,7 @@ html, body {
 .card-price {
   font-size: 1.5em;
   color: #007bff;
-  margin: 10px 0;
+  margin: 5px 0;
   font-weight: bold; /* Make the price stand out */
 }
 
@@ -437,6 +436,7 @@ html, body {
 .card-text {
   font-size: 14px;
   color: #666;
+  margin-top: 2px;
 }
 .events{
   margin-left: 120px;
