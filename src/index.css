@@ -1,8 +1,9 @@
+/* Sidebar Styles */
 .sidebar {
-  background-color: rgb(83, 5, 83); /* Sidebar background color */
-  color: white; /* Default text color */
+  background-color: rgb(83, 5, 83);
+  color: white;
   width: 125px;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   padding: 20px;
   position: fixed;
   top: 0;
@@ -10,9 +11,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  overflow-y: auto;
   z-index: 1000;
-  overflow-y: auto; /* Allow vertical scrolling if content exceeds viewport height */
 }
 
 .sidebar.collapsed {
@@ -58,7 +58,7 @@
 
 .sidebar.collapsed ul li {
   justify-content: center; /* Center icons when collapsed */
-  padding: 10px ;
+  padding: 10px;
 }
 
 .sidebar ul li:hover {
@@ -76,7 +76,6 @@
 .sidebar.collapsed ul li svg {
   margin-right: 0; /* Remove margin when sidebar is collapsed */
   color: rgb(229, 233, 11);
-  
 }
 
 .hide-text {
@@ -102,6 +101,29 @@
   color: #ffd700; /* Link text color on hover */
 }
 
+/* Main Content Styles */
+.main-content {
+  margin-left: 125px; /* Sidebar width */
+  padding: 20px; /* Adjust padding as needed */
+  overflow: auto;
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left: 20px; /* Adjust for collapsed state */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px; /* Adjust for smaller screens */
+  }
+  .sidebar.collapsed {
+    width: 60px; /* Adjust for collapsed state on smaller screens */
+  }
+  .main-content {
+    margin-left: 80px; /* Adjust margin for smaller screens */
+  }
+}
 
 /*login*/
 
