@@ -554,31 +554,25 @@ html, body {
   background-color: #f4f4f4;
 }
 /*EVENTS PAGE*/
-.events-page {
-  background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); /* Update with your image path */
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+.sidebar-page {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
 }
 
-.content-area {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 600px;
-  color: white;
+
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  color: #333;
 }
 
-.page-title {
-  font-size: 2.5em;
-  margin-bottom: 20px;
+.main-content h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
-.page-description {
+.main-content p {
   font-size: 1.2em;
   line-height: 1.6;
 }
