@@ -57,7 +57,7 @@ const Register = () => {
           },
         });
         setTimeout(() => {
-          navigate('/login'); // Redirect to login page after successful registration
+          navigate('/sidebar'); // Redirect to login page after successful registration
         }, 2000); // Delay to show toast message
       }
     } catch (error) {
@@ -131,7 +131,11 @@ const Register = () => {
           </div>
           <button type="submit">Register</button>
         </form>
-        <p>Already have an account? <a href="/login">Login</a></p>
+        <p className="button-link-container">
+  Already have an account? 
+  <a href="/login" className="button-link">Login</a>
+</p>
+
       </div>
       {/* Toast Container */}
       <ToastContainer />
