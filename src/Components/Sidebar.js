@@ -11,6 +11,7 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
   };
 
   return (
+    
     <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="toggle-btn" onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} />
@@ -59,6 +60,7 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
         </li>
       </ul>
     </div>
+    
   );
 };
 

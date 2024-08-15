@@ -68,6 +68,27 @@ const Events = () => {
       content: 'Hands-on learning with industry professionals.',
       price: '$90'
     },
+    {
+      id: 9,
+      title: 'Workshop',
+      image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
+      content: 'Hands-on learning with industry professionals.',
+      price: '$90'
+    },
+    {
+      id: 9,
+      title: 'Workshop',
+      image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
+      content: 'Hands-on learning with industry professionals.',
+      price: '$90'
+    },
+    {
+      id: 9,
+      title: 'Workshop',
+      image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
+      content: 'Hands-on learning with industry professionals.',
+      price: '$90'
+    },
   ];
 
   const handleView = (event) => {
