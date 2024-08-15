@@ -1,4 +1,3 @@
-// Sidebar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +11,7 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
   };
 
   return (
+    
     <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="toggle-btn" onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} />
@@ -19,8 +19,8 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
       <h2 className={`h2 ${isCollapsed ? 'hidden' : ''}`}>EVENTPRO</h2>
       <ul>
         <li>
-          <Link
-            to="/AdminDash"
+          <Link 
+            to="/AdminDash" 
             className={`nav-link ${activeComponent === 'AdminDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
             onClick={() => setActiveComponent('AdminDash')}
           >
@@ -29,8 +29,8 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
           </Link>
         </li>
         <li>
-          <Link
-            to="/UsersDash"
+          <Link 
+            to="/UsersDash" 
             className={`nav-link ${activeComponent === 'UsersDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
             onClick={() => setActiveComponent('UsersDash')}
           >
@@ -39,8 +39,8 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
           </Link>
         </li>
         <li>
-          <Link
-            to="/events"
+          <Link 
+            to="/events" 
             className={`nav-link ${activeComponent === 'events' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
             onClick={() => setActiveComponent('events')}
           >
@@ -49,8 +49,8 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
           </Link>
         </li>
         <li>
-          <Link
-            to="/income"
+          <Link 
+            to="/income" 
             className={`nav-link ${activeComponent === 'income' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
             onClick={() => setActiveComponent('income')}
           >
@@ -60,6 +60,7 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
         </li>
       </ul>
     </div>
+    
   );
 };
 
