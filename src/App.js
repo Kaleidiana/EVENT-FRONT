@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
@@ -6,10 +8,10 @@ import Login from './Components/Login';
 import Sidebar from './Components/Sidebar';
 import AdminDash from './Components/AdminDash';
 import UsersDash from './Components/UsersDash';
-import Events from './Components/Events';
+import EventsPage from './Components/EventsPage'; // Import the new EventsPage component
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
-import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure import path is correct
+import ProtectedRoutes from './Components/ProtectedRoutes';
 import './App.css';
 
 // Retrieve the user role from local storage
@@ -37,7 +39,7 @@ function App() {
                   ) : (
                     <Route path="UsersDash" element={<UsersDash />} />
                   )}
-                  <Route path="events" element={<Events />} />
+                  <Route path="events" element={<EventsPage />} /> {/* Updated to EventsPage */}
                   <Route
                     path="income"
                     element={<ProtectedRoutes allowedRoles={['admin']} element={<Income />} />}

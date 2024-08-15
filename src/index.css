@@ -576,4 +576,19 @@ html, body {
   font-size: 1.2em;
   line-height: 1.6;
 }
+.events-page {
+  padding: 20px;
+  background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
 
+.events-page h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.events-page p {
+  font-size: 1.2em;
+}
