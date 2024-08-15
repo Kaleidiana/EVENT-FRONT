@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from './Sidebar'; // Import Sidebar component correctly
+import Sidebar from './SidebarLayout'; // Import Sidebar component correctly
 
 const SidebarPage = () => {
   return (

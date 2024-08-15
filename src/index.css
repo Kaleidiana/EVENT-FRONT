@@ -399,6 +399,7 @@ html, body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #d4d1d1af;
 }
 
 .card:hover {
@@ -455,7 +456,7 @@ html, body {
 /* Add styles for the navigation */
 
 .nav {
-  background-color: #333;
+  background-color: #520252;
   padding: 24px;
   display: flex;
   justify-content: flex-end; /* Align items in nav to the right */
@@ -554,14 +555,11 @@ html, body {
   background-color: #f4f4f4;
 }
 /*EVENTS PAGE*/
-.sidebar-page {
-  display: flex; /* Align children side by side */
+.sidebar-layout {
+  display: flex;
 }
-
-
-.main-content {
-  flex: 1; /* Take up the remaining space */
-  padding: 20px; /* Add some padding */
-  background-color: #fff; /* Adjust as needed */
-  /* Add any additional styling for your main content area */
+.content {
+  flex: 1;
+  padding: 20px; /* Adjust padding as needed */
+  /* Add any additional styling for the content area */
 }
