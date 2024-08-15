@@ -555,40 +555,13 @@ html, body {
 }
 /*EVENTS PAGE*/
 .sidebar-page {
-  display: flex;
-  height: 100vh;
+  display: flex; /* Align children side by side */
 }
-
 
 
 .main-content {
-  flex-grow: 1;
-  padding: 20px;
-  color: #333;
-}
-
-.main-content h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.main-content p {
-  font-size: 1.2em;
-  line-height: 1.6;
-}
-.events-page {
-  padding: 20px;
-  background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-
-.events-page h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.events-page p {
-  font-size: 1.2em;
+  flex: 1; /* Take up the remaining space */
+  padding: 20px; /* Add some padding */
+  background-color: #fff; /* Adjust as needed */
+  /* Add any additional styling for your main content area */
 }

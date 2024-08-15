@@ -1,7 +1,7 @@
+// src/Components/Login.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,64 +18,85 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // Perform login logic (e.g., API call)
-    console.log(`Logged in with Email: ${email}, and Password: ${password}`);
+    
+    try {
+      const response = await fetch('http://localhost:4000/api/auth/registerUser', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
 
-    // Simulate successful login
-    toast.success('Login successful!', {
-      position: 'top-right',
-      className: 'toast-message', // Custom class for additional styling
-      style: { 
-        width: 'auto', // Set width to auto to fit content
-        whiteSpace: 'nowrap',
-        marginLeft: '100px', // Prevents wrapping to the next line
-        textAlign: 'center', // Center the text
-      },
-    });
-
-    // Redirect after showing the toast
-    setTimeout(() => {
-      navigate('/sidebar'); // Redirect to /sidebar route after login
-    }, 2000); // Delay to show toast message
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Login failed:', errorText);
+        toast.error('Invalid email or password.', {
+          position: 'top-right',
+          style: {
+            width: 'auto',
+            whiteSpace: 'nowrap',
+            marginLeft: '100px',
+            textAlign: 'center',
+          },
+        });
+      } else {
+        const data = await response.json();
+        console.log('Login successful:', data);
+        toast.success('Login successful!', {
+          position: 'top-right',
+          style: {
+            width: 'auto',
+            whiteSpace: 'nowrap',
+            marginLeft: '100px',
+            textAlign: 'center',
+          },
+        });
+        setTimeout(() => {
+          navigate('/sidebar'); // Redirect after successful login
+        }, 2000);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+      toast.error('There was an issue with your login.', {
+        position: 'top-right',
+        style: {
+          width: 'auto',
+          whiteSpace: 'nowrap',
+          marginLeft: '100px',
+          textAlign: 'center',
+        },
+      });
+    }
   };
 
   return (
     <div className="login-container">
-      <Form className="login-form" onSubmit={handleLogin}>
+      <form className="login-form" onSubmit={handleLogin}>
         <h2>Login</h2>
-
-        <Form.Group controlId="email">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
-            name="email"
+        <div>
+          <label>Email:</label>
+          <input
             type="email"
             placeholder="Enter Email"
             value={email}
             onChange={handleEmailChange}
             required
           />
-        </Form.Group>
-
-        <Form.Group controlId="password">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            name="password"
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
             type="password"
             placeholder="Enter Password"
             value={password}
             onChange={handlePasswordChange}
             required
           />
-        </Form.Group>
+        </div>
+        <button type="submit">Login</button>
+      </form>
 
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
-      </Form>
-
-      {/* Toast Container */}
       <ToastContainer />
     </div>
   );
