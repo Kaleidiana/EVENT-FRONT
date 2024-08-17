@@ -404,7 +404,7 @@ html, body {
 
 .card:hover {
   transform: scale(1.05);
-  background-color: rgb(240, 233, 221);
+  background-color: rgb(198, 233, 2);
 }
 
 .card img {
@@ -424,6 +424,12 @@ html, body {
   color: #007bff;
   margin: 1px 0;
   font-weight: bold; /* Make the price stand out */
+}
+
+.card-location{
+  color: rgb(5, 5, 5);
+  font-size: 17px;
+  font-family: Roboto plus;
 }
 
 
