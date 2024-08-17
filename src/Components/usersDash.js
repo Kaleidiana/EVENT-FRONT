@@ -5,7 +5,7 @@ function UsersDash() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/users/getAllUsers') // Ensure this is the correct endpoint
+    axios.get('http://localhost:4000/api/users/getAllUsers') // Ensure this is the correct endpoint
       .then(response => {
         setUsers(response.data);
       })
