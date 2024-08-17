@@ -5,8 +5,9 @@ function UsersDash() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/users/getAllUsers') // Ensure this is the correct endpoint
+    axios.get('http://localhost:4000/api/users/getAllUsers')
       .then(response => {
+        console.log(response.data); // Log the received data
         setUsers(response.data);
       })
       .catch(error => {
@@ -27,14 +28,20 @@ function UsersDash() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => (
-            <tr key={index}>
-              <td>{user.firstname} {user.lastname}</td>
-              <td>{user.gender}</td>
-              <td>{user.selectedEvent ? user.selectedEvent.title : 'No event selected'}</td>
-              <td>{user.selectedEvent ? user.selectedEvent.price : 'N/A'}</td>
+          {users.length > 0 ? (
+            users.map((user, index) => (
+              <tr key={index}>
+                <td>{user.firstname} {user.lastname}</td>
+                <td>{user.gender}</td>
+                <td>{user.selectedEvent ? user.selectedEvent.title : 'No event selected'}</td>
+                <td>{user.selectedEvent ? user.selectedEvent.price : 'N/A'}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No users available</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
