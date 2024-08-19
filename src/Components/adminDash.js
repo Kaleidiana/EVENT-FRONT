@@ -1,10 +1,7 @@
-// AdminDash.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Dropdown } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AdminDash = () => {
   const [events, setEvents] = useState([]);
@@ -13,29 +10,34 @@ const AdminDash = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/admin/events')
+    axios.get('http://localhost:4000/api/events')
       .then(response => {
+        console.log('Events data:', response.data); // Log events data
         setEvents(response.data);
         setLoading(false);
       })
       .catch(error => {
+        console.error('Error fetching events:', error); // Log errors
         setError('Error fetching events: ' + error.message);
         setLoading(false);
       });
   }, []);
-
+  
   useEffect(() => {
-    axios.get('/api/admin/users')
+    axios.get('http://localhost:4000/api/users/getAllUsers')
       .then(response => {
+        console.log('Users data:', response.data); // Log users data
         setUsers(response.data);
       })
       .catch(error => {
+        console.error('Error fetching users:', error); // Log errors
         setError('Error fetching users: ' + error.message);
       });
   }, []);
+  
 
   const handleDeleteEvent = (eventId) => {
-    axios.delete(`/api/admin/events/${eventId}`)
+    axios.delete(`http://localhost:4000/api/events/${eventId}`) // Updated API endpoint
       .then(() => {
         setEvents(events.filter(event => event._id !== eventId));
         toast.success('Event deleted successfully');
@@ -46,7 +48,7 @@ const AdminDash = () => {
   };
 
   const handleDeleteUser = (userId) => {
-    axios.delete(`/api/admin/users/${userId}`)
+    axios.delete(`http://localhost:4000/api/users/${userId}`) // Updated API endpoint
       .then(() => {
         setUsers(users.filter(user => user._id !== userId));
         toast.success('User deleted successfully');

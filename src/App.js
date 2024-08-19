@@ -9,7 +9,7 @@ import UsersDash from './Components/UsersDash';
 import Events from './Components/Events';
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
-import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure import path is correct
+import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
 import './App.css';
 
 function App() {
@@ -31,14 +31,14 @@ function App() {
               <div className="content">
                 <Routes>
                   {userRole === 'admin' && (
-                    <Route path="AdminDash" element={<AdminDash />} />
+                    <Route path="/AdminDash" element={<AdminDash />} />
                   )}
                   {userRole !== 'admin' && (
-                    <Route path="UsersDash" element={<UsersDash />} />
+                    <Route path="/UsersDash" element={<UsersDash />} />
                   )}
-                  <Route path="events" element={<Events />} />
+                  <Route path="/events" element={<Events />} />
                   <Route
-                    path="income"
+                    path="/income"
                     element={
                       <ProtectedRoutes allowedRoles={['admin']}>
                         <Income />
@@ -55,6 +55,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;
