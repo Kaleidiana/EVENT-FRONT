@@ -1,5 +1,3 @@
-// src/Components/Login.js
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -22,7 +20,7 @@ function Login() {
     event.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:4000/api/auth/registerUser', {
+      const response = await fetch('http://localhost:4000/api/auth/login', { // Correct endpoint for login
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -43,6 +41,10 @@ function Login() {
       } else {
         const data = await response.json();
         console.log('Login successful:', data);
+        
+        // Store the token in local storage
+        localStorage.setItem('authToken', data.token); 
+        
         toast.success('Login successful!', {
           position: 'top-right',
           style: {
@@ -52,8 +54,10 @@ function Login() {
             textAlign: 'center',
           },
         });
+        
+        // Redirect after successful login
         setTimeout(() => {
-          navigate('/sidebar'); // Redirect after successful login
+          navigate('/sidebar');
         }, 2000);
       }
     } catch (error) {
