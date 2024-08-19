@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCalendarDays, faUserTie, faCalendarAlt, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 
+
 const Sidebar = ({ setActiveComponent, activeComponent }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
@@ -11,7 +12,6 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
   };
 
   return (
-    
     <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="toggle-btn" onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} />
@@ -59,7 +59,6 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
           </Link>
         </li>
       </ul>
-      
     </div>
   );
 };

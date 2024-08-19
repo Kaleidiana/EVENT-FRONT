@@ -30,8 +30,8 @@ function App() {
               <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
               <div className="content">
                 <Routes>
-                <Route path="/sidebar" element={<Sidebar />} />
-                    <Route path="/adminDash" element={<AdminDash />} />
+                  <Route path="/sidebar" element={<Sidebar />} />
+                  <Route path="/adminDash" element={<AdminDash />} />
                   
                   {userRole !== 'admin' && (
                     <Route path="/usersDash" element={<UsersDash />} />
