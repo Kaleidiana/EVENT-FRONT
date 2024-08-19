@@ -3,24 +3,17 @@ import axios from 'axios';
 
 function UsersDash() {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true); // Added loading state
-  const [error, setError] = useState(null); // Added error state
 
   useEffect(() => {
     axios.get('http://localhost:4000/api/users/getAllUsers')
       .then(response => {
+        console.log(response.data); // Log the received data
         setUsers(response.data);
-        setLoading(false); // Set loading to false once data is fetched
       })
       .catch(error => {
         console.error('There was an error fetching the users!', error);
-        setError('Error fetching users.'); // Set error message
-        setLoading(false); // Set loading to false even if there's an error
       });
   }, []);
-
-  if (loading) return <p>Loading users...</p>; // Display loading message
-  if (error) return <p>{error}</p>; // Display error message
 
   return (
     <div className="users-dash">
