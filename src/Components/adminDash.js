@@ -33,24 +33,24 @@ const AdminDash = () => {
   }, []);
   
   useEffect(() => {
-    // Retrieve the token from local storage
     const token = localStorage.getItem('authToken');
-
-    // Configure the headers with the token
+    console.log('Token:', token); // Log the token to verify it's being retrieved
     const config = {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     };
-
+  
     axios.get('http://localhost:4000/api/users/getAllUsers', config)
       .then(response => {
         setUsers(response.data);
       })
       .catch(error => {
-        setError('Error fetching users: ' + error.message);
+        console.error('Error fetching users:', error); // Log full error to console
+        setError('Error fetching users: ' + (error.response?.data?.message || error.message));
       });
   }, []);
+
 
   const handleDeleteEvent = (eventId) => {
     // Retrieve the token from local storage

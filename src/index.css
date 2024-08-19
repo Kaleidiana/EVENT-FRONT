@@ -562,24 +562,24 @@ html, body {
 }
 /*ADMIN DASH PAGE*/
 
-/* h2 {
+h2 {
   margin-bottom: 20px;
   font-size: 24px;
   color: #c409ca;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-} */
+}
 
 /* table {
   width: 80%;
   border-collapse: collapse;
   margin-left: 10%;
- }
+ } */
 
-table th, table td {
+/* table th, table td {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
-}
+} */
 
 table th {
   background-color: #f8f8f8;
@@ -587,5 +587,5 @@ table th {
 
 table td {
   background-color: #fff;
-}  */
+} 
 
