@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCalendarDays, faUserTie, faCalendarAlt, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 
-
 const Sidebar = ({ setActiveComponent, activeComponent }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 

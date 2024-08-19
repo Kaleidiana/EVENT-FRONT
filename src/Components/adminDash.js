@@ -96,12 +96,12 @@ const AdminDash = () => {
 
   return (
     <div className="admin-dash container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
+      <h3 className="text-2xl font-bold mb-4">Admin Dashboard</h3>
       {loading && <p className="text-blue-500">Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
       <div className="manage-section">
-        <h2 className="text-xl font-bold mb-2">Manage Events</h2>
+        <h3 className="text-xl font-bold mb-2">Manage Events</h3>
         <div className="table-responsive">
           <table className="table table-hover">
             <thead>
@@ -139,7 +139,7 @@ const AdminDash = () => {
       </div>
 
       <div className="manage-section">
-        <h2 className="text-xl font-bold mt-6 mb-2">Manage Users</h2>
+        <h3 className="text-xl font-bold mt-6 mb-2">Manage Users</h3>
         <div className="table-responsive">
           <table className="table table-hover">
             <thead>
