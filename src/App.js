@@ -12,35 +12,38 @@ import NotFound from './Components/NotFound';
 import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure import path is correct
 import './App.css';
 
-// Retrieve the user role from local storage
-const userRole = localStorage.getItem('userRole');
-
 function App() {
+  const [activeComponent, setActiveComponent] = React.useState('');
+
+  const userRole = localStorage.getItem('userRole');
+
   return (
     <Router>
       <Routes>
-        {/* Routes for Home, Register, and Login */}
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-
-        {/* Routes with Sidebar */}
         <Route
           path="/*"
           element={
             <div className="App">
-              <Sidebar />
+              <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
               <div className="content">
                 <Routes>
-                  {userRole === 'admin' ? (
+                  {userRole === 'admin' && (
                     <Route path="AdminDash" element={<AdminDash />} />
-                  ) : (
+                  )}
+                  {userRole !== 'admin' && (
                     <Route path="UsersDash" element={<UsersDash />} />
                   )}
                   <Route path="events" element={<Events />} />
                   <Route
                     path="income"
-                    element={<ProtectedRoutes allowedRoles={['admin']} element={<Income />} />}
+                    element={
+                      <ProtectedRoutes allowedRoles={['admin']}>
+                        <Income />
+                      </ProtectedRoutes>
+                    }
                   />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
@@ -52,5 +55,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
