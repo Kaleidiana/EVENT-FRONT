@@ -48,7 +48,7 @@ const AdminDash = () => {
   };
 
   const handleDeleteUser = (userId) => {
-    axios.delete(`http://localhost:4000/api/users/${userId}`) // Updated API endpoint
+    axios.delete(`http://localhost:4000/api/users/getAllUsers${userId}`) // Updated API endpoint
       .then(() => {
         setUsers(users.filter(user => user._id !== userId));
         toast.success('User deleted successfully');

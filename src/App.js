@@ -30,11 +30,11 @@ function App() {
               <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
               <div className="content">
                 <Routes>
-                  {userRole === 'admin' && (
-                    <Route path="/AdminDash" element={<AdminDash />} />
-                  )}
+                <Route path="/sidebar" element={<Sidebar />} />
+                    <Route path="/adminDash" element={<AdminDash />} />
+                  
                   {userRole !== 'admin' && (
-                    <Route path="/UsersDash" element={<UsersDash />} />
+                    <Route path="/usersDash" element={<UsersDash />} />
                   )}
                   <Route path="/events" element={<Events />} />
                   <Route
