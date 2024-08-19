@@ -589,12 +589,14 @@ html, body {
 h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
+  color: #c409ca;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 table {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
+  margin-left: 10%;
 }
 
 table th, table td {
