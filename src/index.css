@@ -2,7 +2,7 @@
 .sidebar {
   background-color: rgb(83, 5, 83);
   color: white;
-  width: 125px;
+  width: 180px;
   height: 100vh;
   padding: 20px;
   position: fixed;
@@ -29,11 +29,12 @@
 }
 
 .h2 {
-  margin-bottom: 20px;
-  transition: opacity 0.3s ease-in-out;
-  color: hsl(64, 100%, 51%); /* Title color */
-  font-size: 1.5rem;
+  margin-bottom: 20px !important;
+  transition: opacity 0.3s ease-in-out !important;
+  color: hsl(64, 100%, 51%) !important; /* Title color */
+  font-size: 1.5rem !important;
 }
+
 
 .h2.hidden {
   display: none; /* Hide title when sidebar is collapsed */
@@ -121,7 +122,18 @@
   margin-left: 20px; /* Adjust for collapsed state */
 }
 
-
+/* Responsive Design */
+@media (max-width: 78px) {
+  .sidebar {
+    width: 80px; /* Adjust for smaller screens */
+  }
+  .sidebar.collapsed {
+    width: 60px; /* Adjust for collapsed state on smaller screens */
+  }
+  .main-content {
+    margin-left: 80px; /* Adjust margin for smaller screens */
+  }
+}
 
 /*login*/
 
