@@ -9,13 +9,14 @@ import UsersDash from './Components/UsersDash';
 import Events from './Components/Events';
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
+import Settings from './Components/Settings';
 import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
 import './App.css';
 
 function App() {
   const [activeComponent, setActiveComponent] = React.useState('');
 
-  const userRole = localStorage.getItem('userRole');
+ 
 
   return (
     <Router>
@@ -33,9 +34,9 @@ function App() {
                   <Route path="/sidebar" element={<Sidebar />} />
                   <Route path="/adminDash" element={<AdminDash />} />
                   
-                  {userRole !== 'admin' && (
+                  
                     <Route path="/usersDash" element={<UsersDash />} />
-                  )}
+                  
                   <Route path="/events" element={<Events />} />
                   <Route
                     path="/income"
@@ -45,7 +46,9 @@ function App() {
                       </ProtectedRoutes>
                     }
                   />
+                  <Route path="/settings" element={<Settings />} />
                   <Route path="*" element={<NotFound />} />
+
                 </Routes>
               </div>
             </div>
