@@ -12,11 +12,20 @@ const AdminDash = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
+    console.log('Auth Token:', token); // Ensure this logs the correct token
+
+    if (!token) {
+      setError('No authentication token found.');
+      setLoading(false);
+      return;
+    }
+
     const config = {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     };
+    console.log('Request Config:', config); // Check if header is set correctly
 
     // Fetch events
     axios.get('http://localhost:4000/api/events', config)
@@ -30,16 +39,15 @@ const AdminDash = () => {
       });
 
     // Fetch users
-    axios.get('http://localhost:4000/api/getAllUsers', config)
+    axios.get('http://localhost:4000/api/users/getAllUsers', config)
       .then(response => {
         setUsers(response.data);
-        setLoading(false);
       })
       .catch(error => {
-        console.error('Error fetching users:', error); // Log full error to console
-        setError('Error fetching users: ' + error.message);
-        setLoading(false);
+        console.error('Error fetching users:', error.response?.data || error.message);
+        setError('Error fetching users: ' + (error.response?.data?.message || error.message));
       });
+
   }, []);
 
   const handleDeleteEvent = (eventId) => {
