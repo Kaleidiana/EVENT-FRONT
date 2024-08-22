@@ -32,7 +32,7 @@ function App() {
               <div className="content">
                 <Routes>
                   <Route path="/sidebar" element={<Sidebar />} />
-                  <Route path="/adminDash" element={<AdminDash />} />
+                  <Route path="/AdminDash" element={<AdminDash />} />
                   
                   
                     <Route path="/usersDash" element={<UsersDash />} />
