@@ -43,16 +43,16 @@ const AdminDash = () => {
         if (!token) {
           throw new Error('No authentication token found.');
         }
-  
+
         const config = {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
         };
-  
+
         const eventsResponse = await fetchResource('http://localhost:4000/api/events', config);
         setEvents(eventsResponse);
-  
+
         const usersResponse = await fetchResource('http://localhost:4000/api/users/getAllUsers', config);
         setUsers(usersResponse);
       } catch (err) {
@@ -62,7 +62,6 @@ const AdminDash = () => {
         setLoading(false);
       }
     };
-  
 
     fetchData();
   }, []);
@@ -135,7 +134,7 @@ const AdminDash = () => {
                 </tr>
               ))}
             </tbody>
-            </table>
+          </table>
         </div>
       </div>
 
