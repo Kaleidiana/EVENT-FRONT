@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Dropdown } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
@@ -11,32 +10,51 @@ const AdminDash = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchResource = async (url, config) => {
+    try {
+      const response = await axios.get(url, config);
+      return response.data;
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        console.error('Unauthorized access. Please check your authentication token.');
+        setError('Unauthorized access. Please check your authentication token.');
+      } else {
+        console.error('Error fetching data:', err.response?.data || err.message);
+        setError('Error fetching data: ' + (err.response?.data?.message || err.message));
+      }
+      return [];
+    }
+  };
+
+  const handleDeleteResource = async (url, id, config) => {
+    try {
+      await axios.delete(`${url}/${id}`, config);
+      toast.success(`Resource deleted successfully`);
+    } catch (err) {
+      console.error('Error deleting resource:', err.message);
+      toast.error('Error deleting resource: ' + err.message);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Retrieve the auth token from localStorage
         const token = localStorage.getItem('authToken');
-        
-        // Check if the token is available
         if (!token) {
           throw new Error('No authentication token found.');
         }
 
-        // Configure the request headers with the authorization token
         const config = {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
         };
 
-        // Fetch events
-        const eventsResponse = await axios.get('http://localhost:4000/api/events', config);
-        setEvents(eventsResponse.data);
+        const eventsResponse = await fetchResource('http://localhost:4000/api/events', config);
+        setEvents(eventsResponse);
 
-        // Fetch users
-        const usersResponse = await axios.get('http://localhost:4000/api/users/getAllUsers', config);
-        setUsers(usersResponse.data);
-
+        const usersResponse = await fetchResource('http://localhost:4000/api/users/getAllUsers', config);
+        setUsers(usersResponse);
       } catch (err) {
         console.error('Error fetching data:', err.response?.data || err.message);
         setError('Error fetching data: ' + (err.response?.data?.message || err.message));
@@ -48,64 +66,32 @@ const AdminDash = () => {
     fetchData();
   }, []);
 
-  // Function to handle deleting an event
   const handleDeleteEvent = async (eventId) => {
-    try {
-      // Retrieve the auth token from localStorage
-      const token = localStorage.getItem('authToken');
-      
-      // Check if the token is available
-      if (!token) throw new Error('No authentication token found.');
+    const token = localStorage.getItem('authToken');
+    if (!token) throw new Error('No authentication token found.');
 
-      // Configure the request headers with the authorization token
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      };
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    };
 
-      // Make a DELETE request to remove the event
-      await axios.delete(`http://localhost:4000/api/events/${eventId}`, config);
-      
-      // Update the events state to remove the deleted event
-      setEvents(events.filter(event => event._id !== eventId));
-      
-      // Show a success notification
-      toast.success('Event deleted successfully');
-    } catch (err) {
-      console.error('Error deleting event:', err.message);
-      toast.error('Error deleting event: ' + err.message);
-    }
+    await handleDeleteResource('http://localhost:4000/api/events', eventId, config);
+    setEvents(events.filter(event => event._id !== eventId));
   };
 
-  // Function to handle deleting a user
   const handleDeleteUser = async (userId) => {
-    try {
-      // Retrieve the auth token from localStorage
-      const token = localStorage.getItem('authToken');
-      
-      // Check if the token is available
-      if (!token) throw new Error('No authentication token found.');
+    const token = localStorage.getItem('authToken');
+    if (!token) throw new Error('No authentication token found.');
 
-      // Configure the request headers with the authorization token
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      };
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    };
 
-      // Make a DELETE request to remove the user
-      await axios.delete(`http://localhost:4000/api/users/deleteUser/${userId}`, config);
-      
-      // Update the users state to remove the deleted user
-      setUsers(users.filter(user => user._id !== userId));
-      
-      // Show a success notification
-      toast.success('User deleted successfully');
-    } catch (err) {
-      console.error('Error deleting user:', err.message);
-      toast.error('Error deleting user: ' + err.message);
-    }
+    await handleDeleteResource('http://localhost:4000/api/users/deleteUser', userId, config);
+    setUsers(users.filter(user => user._id !== userId));
   };
 
   return (
@@ -135,20 +121,20 @@ const AdminDash = () => {
                   <td>{event.content}</td>
                   <td>{event.price}</td>
                   <td>
-                    <Dropdown>
-                      <Dropdown.Toggle variant="success" id={`dropdown-event-${event._id}`} size="sm">
+                    <div className="dropdown">
+                      <button className="btn btn-success dropdown-toggle" type="button" id={`dropdown-event-${event._id}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Actions
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item href={`#/editEvent/${event._id}`}>Edit Event</Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleDeleteEvent(event._id)}>Delete Event</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                      </button>
+                      <div className="dropdown-menu" aria-labelledby={`dropdown-event-${event._id}`}>
+                        <a className="dropdown-item" href={`#/editEvent/${event._id}`}>Edit Event</a>
+                        <button className="dropdown-item" onClick={() => handleDeleteEvent(event._id)}>Delete Event</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+            </table>
         </div>
       </div>
 
@@ -173,15 +159,15 @@ const AdminDash = () => {
                   <td>{user.gender}</td>
                   <td>{user.event}</td>
                   <td>
-                    <Dropdown>
-                      <Dropdown.Toggle variant="success" id={`dropdown-user-${user._id}`} size="sm">
+                    <div className="dropdown">
+                      <button className="btn btn-success dropdown-toggle" type="button" id={`dropdown-user-${user._id}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Actions
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item href={`#/editUser/${user._id}`}>Edit User</Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleDeleteUser(user._id)}>Delete User</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                      </button>
+                      <div className="dropdown-menu" aria-labelledby={`dropdown-user-${user._id}`}>
+                        <a className="dropdown-item" href={`#/editUser/${user._id}`}>Edit User</a>
+                        <button className="dropdown-item" onClick={() => handleDeleteUser(user._id)}>Delete User</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               ))}
