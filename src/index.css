@@ -121,18 +121,7 @@
   margin-left: 20px; /* Adjust for collapsed state */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 80px; /* Adjust for smaller screens */
-  }
-  .sidebar.collapsed {
-    width: 60px; /* Adjust for collapsed state on smaller screens */
-  }
-  .main-content {
-    margin-left: 80px; /* Adjust margin for smaller screens */
-  }
-}
+
 
 /*login*/
 
