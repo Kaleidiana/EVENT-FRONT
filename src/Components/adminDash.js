@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Dropdown } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 
 const AdminDash = () => {
   const [events, setEvents] = useState([]);
@@ -13,11 +14,15 @@ const AdminDash = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Retrieve the auth token from localStorage
         const token = localStorage.getItem('authToken');
+        
+        // Check if the token is available
         if (!token) {
           throw new Error('No authentication token found.');
         }
 
+        // Configure the request headers with the authorization token
         const config = {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -43,19 +48,29 @@ const AdminDash = () => {
     fetchData();
   }, []);
 
+  // Function to handle deleting an event
   const handleDeleteEvent = async (eventId) => {
     try {
+      // Retrieve the auth token from localStorage
       const token = localStorage.getItem('authToken');
+      
+      // Check if the token is available
       if (!token) throw new Error('No authentication token found.');
 
+      // Configure the request headers with the authorization token
       const config = {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       };
 
+      // Make a DELETE request to remove the event
       await axios.delete(`http://localhost:4000/api/events/${eventId}`, config);
+      
+      // Update the events state to remove the deleted event
       setEvents(events.filter(event => event._id !== eventId));
+      
+      // Show a success notification
       toast.success('Event deleted successfully');
     } catch (err) {
       console.error('Error deleting event:', err.message);
@@ -63,19 +78,29 @@ const AdminDash = () => {
     }
   };
 
+  // Function to handle deleting a user
   const handleDeleteUser = async (userId) => {
     try {
+      // Retrieve the auth token from localStorage
       const token = localStorage.getItem('authToken');
+      
+      // Check if the token is available
       if (!token) throw new Error('No authentication token found.');
 
+      // Configure the request headers with the authorization token
       const config = {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       };
 
+      // Make a DELETE request to remove the user
       await axios.delete(`http://localhost:4000/api/users/deleteUser/${userId}`, config);
+      
+      // Update the users state to remove the deleted user
       setUsers(users.filter(user => user._id !== userId));
+      
+      // Show a success notification
       toast.success('User deleted successfully');
     } catch (err) {
       console.error('Error deleting user:', err.message);
