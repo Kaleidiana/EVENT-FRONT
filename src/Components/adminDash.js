@@ -11,79 +11,76 @@ const AdminDash = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    console.log('Auth Token:', token); // Ensure this logs the correct token
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          throw new Error('No authentication token found.');
+        }
 
-    if (!token) {
-      setError('No authentication token found.');
-      setLoading(false);
-      return;
-    }
+        const config = {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        };
 
-    const config = {
-      headers: {
-        'Authorization': `Bearer ${token}`
+        // Fetch events
+        const eventsResponse = await axios.get('http://localhost:4000/api/events', config);
+        setEvents(eventsResponse.data);
+
+        // Fetch users
+        const usersResponse = await axios.get('http://localhost:4000/api/users/getAllUsers', config);
+        setUsers(usersResponse.data);
+
+      } catch (err) {
+        console.error('Error fetching data:', err.response?.data || err.message);
+        setError('Error fetching data: ' + (err.response?.data?.message || err.message));
+      } finally {
+        setLoading(false);
       }
     };
-    console.log('Request Config:', config); // Check if header is set correctly
 
-    // Fetch events
-    axios.get('http://localhost:4000/api/events', config)
-      .then(response => {
-        setEvents(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError('Error fetching events: ' + error.message);
-        setLoading(false);
-      });
-
-    // Fetch users
-    axios.get('http://localhost:4000/api/users/getAllUsers', config)
-      .then(response => {
-        setUsers(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching users:', error.response?.data || error.message);
-        setError('Error fetching users: ' + (error.response?.data?.message || error.message));
-      });
-
+    fetchData();
   }, []);
 
-  const handleDeleteEvent = (eventId) => {
-    const token = localStorage.getItem('authToken');
-    const config = {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    };
+  const handleDeleteEvent = async (eventId) => {
+    try {
+      const token = localStorage.getItem('authToken');
+      if (!token) throw new Error('No authentication token found.');
 
-    axios.delete(`http://localhost:4000/api/events/${eventId}`, config)
-      .then(() => {
-        setEvents(events.filter(event => event._id !== eventId));
-        toast.success('Event deleted successfully');
-      })
-      .catch(error => {
-        setError('Error deleting event: ' + error.message);
-      });
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      };
+
+      await axios.delete(`http://localhost:4000/api/events/${eventId}`, config);
+      setEvents(events.filter(event => event._id !== eventId));
+      toast.success('Event deleted successfully');
+    } catch (err) {
+      console.error('Error deleting event:', err.message);
+      toast.error('Error deleting event: ' + err.message);
+    }
   };
 
-  const handleDeleteUser = (userId) => {
-    const token = localStorage.getItem('authToken');
-    const config = {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    };
+  const handleDeleteUser = async (userId) => {
+    try {
+      const token = localStorage.getItem('authToken');
+      if (!token) throw new Error('No authentication token found.');
 
-    axios.delete(`http://localhost:4000/api/users/deleteUser/${userId}`, config)
-      .then(() => {
-        setUsers(users.filter(user => user._id !== userId));
-        toast.success('User deleted successfully');
-      })
-      .catch(error => {
-        setError('Error deleting user: ' + error.message);
-      });
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      };
+
+      await axios.delete(`http://localhost:4000/api/users/deleteUser/${userId}`, config);
+      setUsers(users.filter(user => user._id !== userId));
+      toast.success('User deleted successfully');
+    } catch (err) {
+      console.error('Error deleting user:', err.message);
+      toast.error('Error deleting user: ' + err.message);
+    }
   };
 
   return (
