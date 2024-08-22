@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCalendarDays, faUserTie, faCalendarAlt, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCalendarDays, faUserTie, faCalendarAlt, faMoneyBillWave, faCog } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = ({ setActiveComponent, activeComponent }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
@@ -55,6 +55,16 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
           >
             <FontAwesomeIcon icon={faMoneyBillWave} />
             <span className={isCollapsed ? 'hide-text' : ''}>INCOME</span>
+          </Link>
+        </li>
+        <li>
+          <Link 
+            to="/settings" 
+            className={`nav-link ${activeComponent === 'settings' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
+            onClick={() => setActiveComponent('settings')}
+          >
+            <FontAwesomeIcon icon={faCog} />
+            <span className={isCollapsed ? 'hide-text' : ''}>SETTINGS</span>
           </Link>
         </li>
       </ul>
