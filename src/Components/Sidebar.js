@@ -19,22 +19,22 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
       <ul>
         <li>
           <Link 
-            to="/UsersDash" 
-            className={`nav-link ${activeComponent === 'UsersDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
-            onClick={() => setActiveComponent('UsersDash')}
-          >
-            <FontAwesomeIcon icon={faUserTie} />
-            <span className={isCollapsed ? 'hide-text' : ''}>USER</span>
-          </Link>
-        </li>
-        <li>
-          <Link 
             to="/AdminDash" 
             className={`nav-link ${activeComponent === 'AdminDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
             onClick={() => setActiveComponent('AdminDash')}
           >
             <FontAwesomeIcon icon={faCalendarDays} />
             <span className={isCollapsed ? 'hide-text' : ''}>ADMIN</span>
+          </Link>
+        </li>
+        <li>
+          <Link 
+            to="/UsersDash" 
+            className={`nav-link ${activeComponent === 'UsersDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
+            onClick={() => setActiveComponent('UsersDash')}
+          >
+            <FontAwesomeIcon icon={faUserTie} />
+            <span className={isCollapsed ? 'hide-text' : ''}>USER</span>
           </Link>
         </li>
         <li>

@@ -588,4 +588,8 @@ table th {
 table td {
   background-color: #fff;
 } 
+/*SETTINGS*/
+
+/* Ensure the sidebar is not collapsed by default in this case */
+
 
