@@ -43,25 +43,26 @@ const AdminDash = () => {
         if (!token) {
           throw new Error('No authentication token found.');
         }
-
+  
         const config = {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
         };
-
+  
         const eventsResponse = await fetchResource('http://localhost:4000/api/events', config);
         setEvents(eventsResponse);
-
+  
         const usersResponse = await fetchResource('http://localhost:4000/api/users/getAllUsers', config);
         setUsers(usersResponse);
       } catch (err) {
-        console.error('Error fetching data:', err.response?.data || err.message);
-        setError('Error fetching data: ' + (err.response?.data?.message || err.message));
+        console.error('Error fetching data:', err.message);
+        setError('Error fetching data: ' + err.message);
       } finally {
         setLoading(false);
       }
     };
+  
 
     fetchData();
   }, []);
