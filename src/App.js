@@ -31,8 +31,9 @@ function App() {
               <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
               <div className="content">
                 <Routes>
+                <Route path="/AdminDash" element={<AdminDash />} />
                   <Route path="/sidebar" element={<Sidebar />} />
-                  <Route path="/AdminDash" element={<AdminDash />} />
+                  
                   
                   
                     <Route path="/usersDash" element={<UsersDash />} />
