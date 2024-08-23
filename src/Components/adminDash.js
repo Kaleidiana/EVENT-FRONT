@@ -39,14 +39,14 @@ const AdminDash = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.getItem('authToken'); // Fetch token from localStorage
         if (!token) {
           throw new Error('No authentication token found.');
         }
 
         const config = {
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`, // Add token to headers
           },
         };
 
@@ -67,12 +67,12 @@ const AdminDash = () => {
   }, []);
 
   const handleDeleteEvent = async (eventId) => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken'); // Fetch token from localStorage
     if (!token) throw new Error('No authentication token found.');
 
     const config = {
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`, // Add token to headers
       },
     };
 
@@ -81,12 +81,12 @@ const AdminDash = () => {
   };
 
   const handleDeleteUser = async (userId) => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken'); // Fetch token from localStorage
     if (!token) throw new Error('No authentication token found.');
 
     const config = {
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`, // Add token to headers
       },
     };
 
