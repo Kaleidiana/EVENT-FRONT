@@ -13,127 +13,136 @@
   justify-content: flex-start;
   overflow-y: auto;
   z-index: 1000;
+  transition: width 0.3s ease-in-out; /* Smooth transition for collapsing */
 }
 
 .sidebar.collapsed {
-  width: 20px; /* Adjust width when collapsed */
+  width: 60px; /* Adjusted for better visibility */
 }
 
 .toggle-btn {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: -40px; /* Moves toggle button outside of sidebar */
   cursor: pointer;
   font-size: 1.5rem;
-  color: white; /* Icon color */
+  color: white;
+  background-color: rgb(83, 5, 83);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.h2 {
+.toggle-btn:hover {
+  background-color: rgb(120, 5, 120); /* Slightly lighter on hover */
+}
+
+.sidebar .h2 {
   margin-bottom: 20px;
   transition: opacity 0.3s ease-in-out;
-  color: hsl(64, 100%, 51%); /* Title color */
+  color: hsl(64, 100%, 51%);
   font-size: 1.5rem;
 }
 
-.h2.hidden {
-  display: none; /* Hide title when sidebar is collapsed */
+.sidebar .h2.hidden {
+  opacity: 0; /* Hidden but takes up space */
 }
 
 .sidebar ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
   margin-top: 20px;
-  margin-left: 0; /* Remove default margin */
 }
 
 .sidebar ul li {
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Increased spacing for better readability */
   cursor: pointer;
   display: flex;
-  line-height: 2.5;
   align-items: center;
-  position: relative;
   transition: color 0.3s ease-in-out;
 }
 
 .sidebar.collapsed ul li {
-  justify-content: center; /* Center icons when collapsed */
-  padding: 10px;
+  justify-content: center;
+  padding: 10px 0; /* Adjusted padding for better alignment */
 }
 
 .sidebar ul li:hover {
-  color: #ffd700; /* Change text color on hover */
+  color: #ffd700;
 }
 
 .sidebar ul li svg {
-  margin-right: 10px; /* Adjust margin between icon and text */
+  margin-right: 15px; /* Increased margin for better separation */
   fill: currentColor;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0; /* Ensure the icon does not shrink */
+  width: 24px; /* Slightly larger icons */
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .sidebar.collapsed ul li svg {
-  margin-right: 0; /* Remove margin when sidebar is collapsed */
+  margin-right: 0;
   color: rgb(229, 233, 11);
 }
 
 .hide-text {
-  display: none; /* Hide text when sidebar is collapsed */
+  display: none;
 }
 
 .sidebar ul li a {
-  color: white; /* Link text color */
+  color: white;
   text-decoration: none;
   display: flex;
   align-items: center;
+  width: 100%; /* Ensures full width for clickable area */
 }
 
 .sidebar ul li a span {
-  margin-left: 10px;
+  margin-left: 15px; /* Increased margin for better spacing */
 }
 
 .sidebar.collapsed ul li a span {
-  display: none; /* Hide text when sidebar is collapsed */
+  display: none;
 }
 
 .sidebar ul li a:hover {
-  color: #ffd700; /* Link text color on hover */
+  color: #ffd700;
 }
+
 .content {
-  margin-left: 70px; /* Sidebar width */
-  padding: 20px; /* Adjust padding as needed */
+  margin-left: 125px;
+  padding: 20px;
   overflow: auto;
+  transition: margin-left 0.3s ease-in-out; /* Smooth transition for content shift */
 }
 
 .sidebar.collapsed ~ .content {
-  margin-left: 20px; /* Adjust for collapsed sidebar */
+  margin-left: 60px; /* Adjusted for new collapsed width */
 }
 
 /* Main Content Styles */
 .main-content {
-  margin-left: 125px; /* Sidebar width */
-  padding: 20px; /* Adjust padding as needed */
+  margin-left: 125px;
+  padding: 20px;
   overflow: auto;
+  transition: margin-left 0.3s ease-in-out; /* Smooth transition for content shift */
 }
 
 .sidebar.collapsed ~ .main-content {
-  margin-left: 20px; /* Adjust for collapsed state */
+  margin-left: 60px; /* Adjusted for new collapsed width */
 }
 
-
-
-/*login*/
-
+/* Login Styles */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
 }
 
 .login-form {
-  width: 400px; /* Adjust width as needed */
+  width: 400px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding: 20px;
   border: 1px solid #ccc;
@@ -141,7 +150,7 @@
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  margin-bottom: 40px; /* Increase margin-bottom to add space */
+  margin-bottom: 40px;
 }
 
 .form-group {
@@ -156,7 +165,7 @@ label {
 .login-button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px;
 }
 
 .login-button {
@@ -174,11 +183,10 @@ label {
   background-color: #00b33c;
 }
 
-
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: calc(100% - 20px); /* Adjust width to fit within form */
+  width: calc(100% - 20px);
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -201,17 +209,15 @@ button:hover {
   background-color: #00b33c;
 }
 
-/* Register.css */
-
+/* Register Styles */
 .register-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   backdrop-filter: blur(5px);
-  /* background-color: #61035c63; */
   padding: 0;
 }
 
@@ -224,26 +230,26 @@ html, body {
   margin: 0;
   padding: 0;
 }
-.nav{
+
+.nav {
   background-color: #2c2c2c;
   display: flex;
 }
 
 .register-form {
-  font-family: Roboto plus;
+  font-family: 'Roboto Plus';
   width: 400px;
   padding: 20px;
   background-color: #7c20b9f5;
   border-radius: 8px;
   color: white;
   box-shadow: 1px 1px 10px #8b8383;
-  
 }
 
 .register-form h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #ffffff; /* Dark gray text */
+  color: #ffffff;
 }
 
 .register-form label {
@@ -256,8 +262,8 @@ html, body {
 
 .register-form button[type="submit"] {
   width: 100%;
-  background-color: #050004; /* Bootstrap primary color */
-  color: #ffffff; /* White text */
+  background-color: #050004;
+  color: #ffffff;
   border: none;
   margin-top: 10px;
 }
@@ -267,7 +273,7 @@ html, body {
 }
 
 .register-form .button-link {
-  color: #ff00ea; /* Bootstrap primary color */
+  color: #ff00ea;
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
@@ -276,45 +282,41 @@ html, body {
 .register-form .button-link:hover {
   text-decoration: none;
 }
+
 .register-form p {
-  text-align: center; /* Center the text */
-  margin-top: 20px; /* Add some spacing from the elements above */
+  text-align: center;
+  margin-top: 20px;
 }
 
 .register-form p a {
-  display: inline-block; /* Make the link act like a button */
+  display: inline-block;
   padding: 2px 10px;
   font-size: 16px;
   color: #fff;
-  background-color: black; /* Black background for the button */
+  background-color: black;
   border: none;
   border-radius: 4px;
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .register-form p a:hover {
-  background-color: #333; /* Darker shade of black on hover */
-  color: #fff; /* Keep text color white on hover */
+  background-color: #333;
+  color: #fff;
 }
 
-/*Dashboard*/
-/* App.css */
-
-/* Dashboard.css */
-
-
+/* Dashboard Styles */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 20px; /* gap between cards */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .card {
   border: 1px solid #ccc;
-  padding: 16px;
+  padding: 4px;
   margin: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -333,55 +335,56 @@ html, body {
 
 .card-actions button {
   margin-right: 8px;
-  padding: 7px 7px;
+  padding: 6px 7px;
   background-color: #d3269f;
   color: white;
-  width: 60px;
+  width: 70px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
 }
 
 .card-actions button:hover {
-  background-color: #0056b3;
+  background-color: #0089b3;
 }
 
-/*events*/
-
+/* Events Styles */
 .events {
   padding: 20px;
   font-family: Arial, sans-serif;
+  margin-left: 120px;
 }
 
 .events h1 {
   font-size: 30px;
   margin-bottom: 20px;
-  color: #4b0505;
+  color: #aa0909;
+  font-weight: bold;
 }
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  gap: 50px; /* Space between the cards */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
   height: 30%;
-  margin: 20px; /* Container margin */
+  margin: 20px;
   margin-right: 70px;
 }
 
 .card {
-  width: 100%; /* Take full width of the grid column */
+  width: 100%;
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #d4d1d1af;
 }
 
 .card:hover {
   transform: scale(1.05);
-  background-color: rgb(198, 233, 2);
+  background-color: rgb(235, 235, 230);
 }
 
 .card img {
@@ -393,183 +396,192 @@ html, body {
 .card-content {
   padding: 8px;
   font-size: 15px;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
-.card-price {
-  font-size: 1.5em;
-  color: #007bff;
-  margin: 1px 0;
-  font-weight: bold; /* Make the price stand out */
-}
-
-.card-location{
-  color: rgb(5, 5, 5);
-  font-size: 17px;
-  font-family: Roboto plus;
-}
-
-
-.card-title {
-  font-size: 20px;
-  margin-bottom: 2px;
-  color: #0c0c0c;
-  text-decoration: none;
-}
-
-.card-text {
-  font-size: 14px;
-  color: #666;
-  margin-top: 2px;
-}
-.events{
-  margin-left: 120px;
-  
-}
-.evv{
-  font-size: 20px;
-  color: rgb(250, 250, 13);
-}
-
-.userss{
-  margin-left: 70px;
-}
-/*/
-/* Home.css */
-/* Add styles for the navigation */
-
-.nav {
-  background-color: #520252;
-  padding: 24px;
-  display: flex;
-  justify-content: flex-end; /* Align items in nav to the right */
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.nav-list {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-}
-
-.nav-item a:hover {
-  background-color: #575757;
-  color: yellow;
-}
-
-/* Other styles remain unchanged */
-
-
-/* Page title */
-.popular {
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Category container styles */
-.category-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns layout */
-  gap: 20px;
-  margin: 20px;
-}
-
-/* Category card styles */
-.category-card {
-  background-color: #dbdada;
+/* Settings Menu */
+.settings-menu {
+  position: fixed;
+  top: 60px; /* Adjust based on header height */
+  right: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  text-align: center;
+  width: 200px;
+  display: none; /* Initially hidden */
+  z-index: 1001;
 }
 
-.category-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+.settings-menu.show {
+  display: block; /* Show the menu when toggled */
 }
 
-.view-more-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #66035e;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
+.settings-menu .settings-option {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
-.view-more-button:hover {
-  background-color: #0056b3;
+.settings-menu .settings-option:last-child {
+  border-bottom: none;
 }
 
-
-/*USERS DASH/
-
-/* UsersDash.css */
-.users-dash {
-  padding: 20px;
+.settings-menu .settings-option:hover {
+  background-color: #f0f0f0;
 }
 
-.users-dash h1 {
-  margin-bottom: 20px;
+/* Dark Mode */
+.dark-mode .sidebar {
+  background-color: #333;
 }
 
-.users-dash table {
-  width: 80%;
-  border-collapse: collapse;
-  margin-left: 13%;
+.dark-mode .toggle-btn {
+  color: #ddd;
 }
 
-.users-dash th, .users-dash td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+.dark-mode .sidebar ul li {
+  color: #ddd;
 }
 
-.users-dash th {
-  background-color: #f4f4f4;
-}
-/*ADMIN DASH PAGE*/
-/* 
-h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #c409ca;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-} */
-
-table {
-  width: 60%;
-  border-collapse: collapse;
-  margin-left: 5%;
-  
- } 
-
- table th, table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
+.dark-mode .sidebar ul li:hover {
+  color: #ffcc00;
 }
 
-table th {
-  background-color: #f8f8f8;
-} 
+.dark-mode .sidebar ul li a {
+  color: #ddd;
+}
 
-  table td {
-  background-color: #fff;
-} 
+.dark-mode .sidebar ul li a:hover {
+  color: #ffcc00;
+}
 
-/*admin dash stylin*/
-/*SETTINGS*/
+.dark-mode .main-content, .dark-mode .events, .dark-mode .admin-dash {
+  background-color: #121212;
+  color: #e0e0e0;
+}
 
-/* Ensure the sidebar is not collapsed by default in this case */
+.dark-mode .login-form, .dark-mode .register-form {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
 
+.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
 
+.dark-mode .card:hover {
+  background-color: #333;
+}
+
+.dark-mode .button-link {
+  color: #ff00ea;
+}
+
+.dark-mode .button-link:hover {
+  color: #ffcc00;
+}
+
+/* Light Mode */
+.light-mode .sidebar {
+  background-color: #f9f9f9;
+}
+
+.light-mode .toggle-btn {
+  color: #333;
+}
+
+.light-mode .sidebar ul li {
+  color: #333;
+}
+
+.light-mode .sidebar ul li:hover {
+  color: #ffcc00;
+}
+
+.light-mode .sidebar ul li a {
+  color: #333;
+}
+
+.light-mode .sidebar ul li a:hover {
+  color: #ffcc00;
+}
+
+.light-mode .main-content, .light-mode .events, .light-mode .admin-dash {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.light-mode .login-form, .light-mode .register-form {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.light-mode .card {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.light-mode .card:hover {
+  background-color: #f0f0f0;
+}
+
+.light-mode .button-link {
+  color: #ff00ea;
+}
+
+.light-mode .button-link:hover {
+  color: #ffcc00;
+}
+
+/* Blue Mode */
+.blue-mode .sidebar {
+  background-color: #0044cc;
+}
+
+.blue-mode .toggle-btn {
+  color: #fff;
+}
+
+.blue-mode .sidebar ul li {
+  color: #fff;
+}
+
+.blue-mode .sidebar ul li:hover {
+  color: #00aaff;
+}
+
+.blue-mode .sidebar ul li a {
+  color: #fff;
+}
+
+.blue-mode .sidebar ul li a:hover {
+  color: #00aaff;
+}
+
+.blue-mode .main-content, .blue-mode .events, .blue-mode .admin-dash {
+  background-color: #e6f2ff;
+  color: #003d66;
+}
+
+.blue-mode .login-form, .blue-mode .register-form {
+  background-color: #e6f2ff;
+  color: #003d66;
+}
+
+.blue-mode .card {
+  background-color: #e6f2ff;
+  color: #003d66;
+}
+
+.blue-mode .card:hover {
+  background-color: #cce0ff;
+}
+
+.blue-mode .button-link {
+  color: #003d66;
+}
+
+.blue-mode .button-link:hover {
+  color: #0066cc;
+}
