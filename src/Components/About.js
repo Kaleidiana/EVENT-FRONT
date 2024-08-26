@@ -25,9 +25,9 @@ const styles = {
     padding: '20px',
     maxWidth: '800px',
     margin: '0 auto',
-    backgroundColor: '#f4f4f4',
+   
     borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    
   },
   heading: {
     textAlign: 'center',
@@ -35,7 +35,8 @@ const styles = {
     marginBottom: '20px',
   },
   paragraph: {
-    fontSize: '16px',
+    fontSize: '18px',
+    fontWeight: "bold",
     lineHeight: '1.6',
     
     marginBottom: '20px',
