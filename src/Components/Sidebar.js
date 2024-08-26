@@ -30,6 +30,12 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
                     </Link>
                 </li>
                 <li>
+                    <Link to="/events" className={`nav-link ${activeComponent === 'Events' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('Events')}>
+                        <FontAwesomeIcon icon={faCog} /> {/* Settings */}
+                        <span className={isCollapsed ? 'hide-text' : ''}>EVENTS</span>
+                    </Link>
+                </li>
+                <li>
                     <Link to="/UsersDash" className={`nav-link ${activeComponent === 'UsersDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('UsersDash')}>
                         <FontAwesomeIcon icon={faUserTie} /> {/* Users Dashboard */}
                         <span className={isCollapsed ? 'hide-text' : ''}>USERS</span>
