@@ -37,7 +37,7 @@ const styles = {
   paragraph: {
     fontSize: '16px',
     lineHeight: '1.6',
-    color: '#555',
+    
     marginBottom: '20px',
   },
 };

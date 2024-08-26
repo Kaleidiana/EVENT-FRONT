@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Sidebar from './Components/Sidebar';
+import About from './Components/About';
 import AdminDash from './Components/AdminDash';
 import UsersDash from './Components/UsersDash';
 import Events from './Components/Events';
@@ -31,6 +32,7 @@ function App() {
               <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
               <div className="content">
                 <Routes>
+                <Route path="/about" element={<About />} />
                 <Route path="/AdminDash" element={<AdminDash />} />
                   <Route path="/sidebar" element={<Sidebar />} />
                   
