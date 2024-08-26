@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from './Card'; // Ensure this path is correct
 
+
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -120,7 +121,7 @@ const Events = () => {
 
   return (
     <div className="events">
-      <h1 className='evv'>EVENTS</h1>
+      <h1 className="evv">EVENTS</h1>
       <div className="card-container">
         {cards.map(card => (
           <Card 

@@ -700,7 +700,7 @@ html, body {
 /* About.css */
 .fade-in {
   opacity: 0;
-  animation: fadeOut 2s backwards;
+  animation: fadeIn 2s forwards;
 }
 
 @keyframes fadeIn {
@@ -713,3 +713,61 @@ html, body {
     transform: translateY(0);
   }
 }
+/* Events slide in*/
+/* Animation for entering from the left */
+@keyframes enterFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation for entering from the right */
+@keyframes enterFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 50px; /* Space between the cards */
+  margin: 20px;
+  margin-right: 70px;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #d4d1d1af;
+  animation: enterFromLeft 0.6s ease-out forwards; /* Apply left animation by default */
+}
+
+/* Alternate animation for odd cards */
+.card:nth-child(odd) {
+  animation: enterFromRight 0.6s ease-out forwards; /* Apply right animation for odd cards */
+}
+
+.selected-event {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+

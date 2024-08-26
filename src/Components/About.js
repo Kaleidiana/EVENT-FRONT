@@ -4,7 +4,7 @@ import React from 'react';
 const About = () => {
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>ABOUT EVENT PRO</h1>
+      <h1 style={styles.heading}>ABOUT EVENTPRO</h1>
       <p className="fade-in" style={styles.paragraph}>
         Welcome to Event Pro! We are your one-stop solution for managing and attending events with ease. Whether you're organizing a small gathering or a large conference, Event Pro provides the tools and services you need to make your event a success.
       </p>
