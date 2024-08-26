@@ -562,7 +562,9 @@ html, body {
 }
 
 
-/* AdminDash.module.css */
+/* index.css */
+
+/* Container Styles */
 .container {
   padding: 20px;
   max-width: 950px;
@@ -571,6 +573,7 @@ html, body {
   background-color: #f8f9fa;
 }
 
+/* Heading Styles */
 .heading {
   text-align: center;
   color: #343a40;
@@ -579,6 +582,7 @@ html, body {
   font-weight: bold;
 }
 
+/* Loading and Error Messages */
 .loading {
   text-align: center;
   color: #007bff;
@@ -591,6 +595,7 @@ html, body {
   margin-bottom: 20px;
 }
 
+/* Manage Section */
 .manageSection {
   margin-bottom: 40px;
 }
@@ -602,6 +607,7 @@ html, body {
   font-weight: bold;
 }
 
+/* Table Styles */
 .tableContainer {
   width: 100%;
   overflow-x: auto;
@@ -612,10 +618,57 @@ html, body {
   border-collapse: collapse;
 }
 
-.custom-dropdown .dropdown-menu {
-  /* Override Bootstrap dropdown menu styles if necessary */
+/* Dropdown Styles */
+.actionsContainer {
+  position: relative;
 }
 
-.custom-dropdown .dropdown-item {
-  /* Override Bootstrap dropdown item styles if necessary */
+.actionsButton {
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: .25rem;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  background-color: transparent;
+  border: 0;
+  border-radius: .25rem;
+}
+
+.dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
 }

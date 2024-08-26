@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-
 import 'react-toastify/dist/ReactToastify.css';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+
 
 const AdminDash = () => {
   const [events, setEvents] = useState([]);
@@ -29,7 +27,7 @@ const AdminDash = () => {
   const handleDeleteResource = async (url, id, config) => {
     try {
       await axios.delete(`${url}/${id}`, config);
-      toast.success('Resource deleted successfully');
+      toast.success(`Resource deleted successfully`);
     } catch (err) {
       toast.error('Error deleting resource: ' + err.message);
     }
@@ -93,15 +91,15 @@ const AdminDash = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h3 className={styles.heading}>Admin Dashboard</h3>
-      {loading && <p className={styles.loading}>Loading...</p>}
-      {error && <p className={styles.error}>{error}</p>}
+    <div className="container">
+      <h3 className="heading">Admin Dashboard</h3>
+      {loading && <p className="loading">Loading...</p>}
+      {error && <p className="error">{error}</p>}
 
-      <div className={styles.manageSection}>
-        <h3 className={styles.sectionHeading}>Manage Events</h3>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
+      <div className="manageSection">
+        <h3 className="sectionHeading">Manage Events</h3>
+        <div className="tableContainer">
+          <table className="table">
             <thead>
               <tr>
                 <th>Title</th>
@@ -119,17 +117,26 @@ const AdminDash = () => {
                   <td>{event.content}</td>
                   <td>{event.price}</td>
                   <td>
-                    <DropdownButton
-                      id={`dropdown-${event._id}`}
-                      title="Actions"
-                      variant="success"
-                      className="custom-dropdown"
-                    >
-                      <Dropdown.Item href={`#/editEvent/${event._id}`}>Edit Event</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleDeleteEvent(event._id)}>
-                        Delete Event
-                      </Dropdown.Item>
-                    </DropdownButton>
+                    <div className="actionsContainer">
+                      <button
+                        className="actionsButton"
+                        type="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Actions
+                      </button>
+                      <div className="dropdown-menu">
+                        <a className="dropdown-item" href={`#/editEvent/${event._id}`}>Edit Event</a>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => handleDeleteEvent(event._id)}
+                        >
+                          Delete Event
+                        </button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -138,10 +145,10 @@ const AdminDash = () => {
         </div>
       </div>
 
-      <div className={styles.manageSection}>
-        <h3 className={styles.sectionHeading}>Manage Users</h3>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
+      <div className="manageSection">
+        <h3 className="sectionHeading">Manage Users</h3>
+        <div className="tableContainer">
+          <table className="table">
             <thead>
               <tr>
                 <th>Firstname</th>
@@ -159,17 +166,26 @@ const AdminDash = () => {
                   <td>{user.gender}</td>
                   <td>{user.event}</td>
                   <td>
-                    <DropdownButton
-                      id={`dropdown-${user._id}`}
-                      title="Actions"
-                      variant="success"
-                      className="custom-dropdown"
-                    >
-                      <Dropdown.Item href={`#/editUser/${user._id}`}>Edit User</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleDeleteUser(user._id)}>
-                        Delete User
-                      </Dropdown.Item>
-                    </DropdownButton>
+                    <div className="actionsContainer">
+                      <button
+                        className="actionsButton"
+                        type="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Actions
+                      </button>
+                      <div className="dropdown-menu">
+                        <a className="dropdown-item" href={`#/editUser/${user._id}`}>Edit User</a>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => handleDeleteUser(user._id)}
+                        >
+                          Delete User
+                        </button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               ))}
