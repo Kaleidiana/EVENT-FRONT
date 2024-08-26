@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const AdminDash = () => {
   const [events, setEvents] = useState([]);
@@ -26,7 +29,7 @@ const AdminDash = () => {
   const handleDeleteResource = async (url, id, config) => {
     try {
       await axios.delete(`${url}/${id}`, config);
-      toast.success(`Resource deleted successfully`);
+      toast.success('Resource deleted successfully');
     } catch (err) {
       toast.error('Error deleting resource: ' + err.message);
     }
@@ -90,15 +93,15 @@ const AdminDash = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h3 style={styles.heading}>Admin Dashboard</h3>
-      {loading && <p style={styles.loading}>Loading...</p>}
-      {error && <p style={styles.error}>{error}</p>}
+    <div className={styles.container}>
+      <h3 className={styles.heading}>Admin Dashboard</h3>
+      {loading && <p className={styles.loading}>Loading...</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
-      <div style={styles.manageSection}>
-        <h3 style={styles.sectionHeading}>Manage Events</h3>
-        <div style={styles.tableContainer}>
-          <table style={styles.table}>
+      <div className={styles.manageSection}>
+        <h3 className={styles.sectionHeading}>Manage Events</h3>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
             <thead>
               <tr>
                 <th>Title</th>
@@ -116,26 +119,17 @@ const AdminDash = () => {
                   <td>{event.content}</td>
                   <td>{event.price}</td>
                   <td>
-                    <div style={styles.actionsContainer}>
-                      <button
-                        style={styles.actionsButton}
-                        type="button"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Actions
-                      </button>
-                      <div className="dropdown-menu">
-                        <a className="dropdown-item" href={`#/editEvent/${event._id}`}>Edit Event</a>
-                        <button
-                          className="dropdown-item"
-                          onClick={() => handleDeleteEvent(event._id)}
-                        >
-                          Delete Event
-                        </button>
-                      </div>
-                    </div>
+                    <DropdownButton
+                      id={`dropdown-${event._id}`}
+                      title="Actions"
+                      variant="success"
+                      className="custom-dropdown"
+                    >
+                      <Dropdown.Item href={`#/editEvent/${event._id}`}>Edit Event</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleDeleteEvent(event._id)}>
+                        Delete Event
+                      </Dropdown.Item>
+                    </DropdownButton>
                   </td>
                 </tr>
               ))}
@@ -144,10 +138,10 @@ const AdminDash = () => {
         </div>
       </div>
 
-      <div style={styles.manageSection}>
-        <h3 style={styles.sectionHeading}>Manage Users</h3>
-        <div style={styles.tableContainer}>
-          <table style={styles.table}>
+      <div className={styles.manageSection}>
+        <h3 className={styles.sectionHeading}>Manage Users</h3>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
             <thead>
               <tr>
                 <th>Firstname</th>
@@ -165,26 +159,17 @@ const AdminDash = () => {
                   <td>{user.gender}</td>
                   <td>{user.event}</td>
                   <td>
-                    <div style={styles.actionsContainer}>
-                      <button
-                        style={styles.actionsButton}
-                        type="button"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Actions
-                      </button>
-                      <div className="dropdown-menu">
-                        <a className="dropdown-item" href={`#/editUser/${user._id}`}>Edit User</a>
-                        <button
-                          className="dropdown-item"
-                          onClick={() => handleDeleteUser(user._id)}
-                        >
-                          Delete User
-                        </button>
-                      </div>
-                    </div>
+                    <DropdownButton
+                      id={`dropdown-${user._id}`}
+                      title="Actions"
+                      variant="success"
+                      className="custom-dropdown"
+                    >
+                      <Dropdown.Item href={`#/editUser/${user._id}`}>Edit User</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleDeleteUser(user._id)}>
+                        Delete User
+                      </Dropdown.Item>
+                    </DropdownButton>
                   </td>
                 </tr>
               ))}
@@ -196,61 +181,6 @@ const AdminDash = () => {
       <ToastContainer />
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: '20px',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    borderRadius: '8px',
-    backgroundColor: '#f8f9fa',
-  },
-  heading: {
-    textAlign: 'center',
-    color: '#343a40',
-    marginBottom: '20px',
-    fontSize: '24px',
-    fontWeight: 'bold',
-  },
-  loading: {
-    textAlign: 'center',
-    color: '#007bff',
-    marginBottom: '20px',
-  },
-  error: {
-    textAlign: 'center',
-    color: '#dc3545',
-    marginBottom: '20px',
-  },
-  manageSection: {
-    marginBottom: '40px',
-  },
-  sectionHeading: {
-    fontSize: '20px',
-    color: '#343a40',
-    marginBottom: '20px',
-    fontWeight: 'bold',
-  },
-  tableContainer: {
-    width: '100%',
-    overflowX: 'auto',
-  },
-  table: {
-    width: '100%',
-    borderCollapse: 'collapse',
-  },
-  actionsContainer: {
-    position: 'relative',
-  },
-  actionsButton: {
-    backgroundColor: '#28a745',
-    color: 'white',
-    borderRadius: '4px',
-    padding: '5px 10px',
-    border: 'none',
-    cursor: 'pointer',
-  },
 };
 
 export default AdminDash;

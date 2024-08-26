@@ -222,7 +222,7 @@ button:hover {
   width: 100vw; /* Full viewport width */
   margin: 0;
   backdrop-filter: blur(5px);
-  /* background-color: #61035c63; */
+  background-color: #61035c63;
   padding: 0;
 }
 
@@ -244,7 +244,7 @@ html, body {
   font-family: Roboto plus;
   width: 400px;
   padding: 20px;
-  background-color: #7c20b9f5;
+  background-color: #470280f5;
   border-radius: 8px;
   color: white;
   box-shadow: 1px 1px 10px #8b8383;
@@ -267,18 +267,18 @@ html, body {
 
 .register-form button[type="submit"] {
   width: 100%;
-  background-color: #050004; /* Bootstrap primary color */
-  color: #ffffff; /* White text */
+  background-color: #0d0e0d; /* Bootstrap primary color */
+  color: #fdfdfd; /* White text */
   border: none;
   margin-top: 10px;
 }
 
 .register-form button[type="submit"]:hover {
-  background-color: #4b4a4b;
+  background-color: rgb(255, 165, 0);
 }
 
 .register-form .button-link {
-  color: #ff00ea; /* Bootstrap primary color */
+  color: #f0eaef; /* Bootstrap primary color */
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
@@ -560,36 +560,62 @@ html, body {
 .users-dash th {
   background-color: #f4f4f4;
 }
-/*ADMIN DASH PAGE*/
 
-h2 {
+
+/* AdminDash.module.css */
+.container {
+  padding: 20px;
+  max-width: 950px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background-color: #f8f9fa;
+}
+
+.heading {
+  text-align: center;
+  color: #343a40;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #c409ca;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
 
-/* table {
-  width: 80%;
+.loading {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.error {
+  text-align: center;
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+
+.manageSection {
+  margin-bottom: 40px;
+}
+
+.sectionHeading {
+  font-size: 20px;
+  color: #343a40;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
   border-collapse: collapse;
-  margin-left: 10%;
- } */
-
-/* table th, table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-} */
-
-table th {
-  background-color: #f8f8f8;
 }
 
-table td {
-  background-color: #fff;
-} 
-/*SETTINGS*/
+.custom-dropdown .dropdown-menu {
+  /* Override Bootstrap dropdown menu styles if necessary */
+}
 
-/* Ensure the sidebar is not collapsed by default in this case */
-
-
+.custom-dropdown .dropdown-item {
+  /* Override Bootstrap dropdown item styles if necessary */
+}
