@@ -357,7 +357,7 @@ html, body {
 .card-actions button {
   margin-right: 8px;
   padding: 7px 7px;
-  background-color: #d3269f;
+  background-color: #470280f5;
   color: white;
   width: 60px;
   border: none;
@@ -386,7 +386,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns */
   gap: 50px; /* Space between the cards */
-  height: 30%;
+  height: 20%;
   margin: 20px; /* Container margin */
   margin-right: 70px;
 }
@@ -394,10 +394,10 @@ html, body {
 .card {
   width: 100%; /* Take full width of the grid column */
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 1px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  transition: transform 0.3s;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #d4d1d1af;
 }
@@ -695,4 +695,21 @@ html, body {
   height: 1px;
   background-color: #dee2e6;
   margin: 20px 0;
+}
+/*ABOUT PAGE*/
+/* About.css */
+.fade-in {
+  opacity: 0;
+  animation: fadeOut 2s backwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Optional: Adds a slight upward movement */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
