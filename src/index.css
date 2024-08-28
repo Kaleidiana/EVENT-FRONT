@@ -387,8 +387,6 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 1px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #d4d1d1af;
 }
@@ -471,7 +469,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns */
   gap: 50px; /* Space between the cards */
-  margin: 20px;
+  margin: 2px;
   margin-right: 70px;
 }
 
