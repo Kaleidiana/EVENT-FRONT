@@ -471,6 +471,8 @@ html, body {
   gap: 50px; /* Space between the cards */
   margin: 2px;
   margin-right: 70px;
+  row-gap: 18px;
+  
 }
 
 
