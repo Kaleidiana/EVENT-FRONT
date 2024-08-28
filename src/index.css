@@ -380,7 +380,8 @@ html, body {
 .events h1 {
   font-size: 30px;
   margin-bottom: 20px;
-  color: #4b0505;
+  color: black;
+  margin: 1px;
 }
 .card {
   width: 100%; /* Take full width of the grid column */

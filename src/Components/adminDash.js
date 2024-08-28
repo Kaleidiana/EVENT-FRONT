@@ -40,17 +40,18 @@ const AdminDash = () => {
         if (!token) {
           throw new Error('No authentication token found.');
         }
-
+  
         const config = {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
         };
-
+  
         const eventsResponse = await fetchResource('http://localhost:4000/api/events', config);
         setEvents(eventsResponse);
-
+  
         const usersResponse = await fetchResource('http://localhost:4000/api/users/getAllUsers', config);
+        console.log('Users Response:', usersResponse); // Check the data
         setUsers(usersResponse);
       } catch (err) {
         setError('Error fetching data: ' + err.message);
@@ -58,10 +59,10 @@ const AdminDash = () => {
         setLoading(false);
       }
     };
-
+  
     fetchData();
   }, []);
-
+  
   const handleDeleteEvent = async (eventId) => {
     const token = localStorage.getItem('authToken');
     if (!token) throw new Error('No authentication token found.');

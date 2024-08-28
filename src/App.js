@@ -33,7 +33,7 @@ function App() {
               <div className="content">
                 <Routes>
                 <Route path="/about" element={<About />} />
-                <Route path="/AdminDash" element={<AdminDash />} />
+                <Route path="/admindash" element={<AdminDash />} />
                   <Route path="/sidebar" element={<Sidebar />} />
                   
                   
