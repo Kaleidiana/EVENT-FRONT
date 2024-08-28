@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from './Card'; // Ensure this path is correct
 
 
 const Events = () => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  // const [/*selectedEvent*/ setSelectedEvent] = useState(null);
 
   const cards = [
     {
@@ -104,20 +104,20 @@ const Events = () => {
     },
   ];
 
-  const handleView = (event) => {
-    console.log(`View card with id: ${event.id}`);
-    setSelectedEvent(event);
-  };
+  // const handleView = (event) => {
+  //   console.log(`View card with id: ${event.id}`);
+  //   // setSelectedEvent(event);
+  // };
 
-  const handleEdit = (id) => {
-    console.log(`Edit card with id: ${id}`);
-    // Implement the edit logic here
-  };
+  // const handleEdit = (id) => {
+  //   console.log(`Edit card with id: ${id}`);
+  //   // Implement the edit logic here
+  // };
 
-  const handleDelete = (id) => {
-    console.log(`Delete card with id: ${id}`);
-    // Implement the delete logic here
-  };
+  // const handleDelete = (id) => {
+  //   console.log(`Delete card with id: ${id}`);
+  //   // Implement the delete logic here
+  // };
 
   return (
     <div className="events">
@@ -131,14 +131,13 @@ const Events = () => {
             content={card.content}
             price={card.price}
             location={card.location} 
-            onView={() => handleView(card)}
-            onEdit={() => handleEdit(card.id)}
-            onDelete={() => handleDelete(card.id)}
+            // onView={() => handleView(card)}
+           
           />
         ))}
       </div>
 
-      {selectedEvent && (
+      {/* {selectedEvent && (
         <div className="selected-event">
           <h2>Selected Event</h2>
           <h3>{selectedEvent.title}</h3>
@@ -146,7 +145,7 @@ const Events = () => {
           <p>{selectedEvent.content}</p>
           <p>Price: {selectedEvent.price}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

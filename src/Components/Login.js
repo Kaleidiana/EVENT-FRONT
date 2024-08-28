@@ -21,7 +21,7 @@ function Login() {
     event.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:4000/api/auth/login', { // Correct endpoint for login
+      const response = await fetch('http://localhost:4000/api/auth/registerUser', { // Correct endpoint for login
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
