@@ -508,7 +508,7 @@ html, body {
 /* Add styles for the navigation */
 
 .nav {
-  background-color: #520252;
+  background-color:  #470280f5;
   padding: 24px;
   display: flex;
   justify-content: flex-end; /* Align items in nav to the right */
@@ -529,7 +529,7 @@ html, body {
 }
 
 .nav-item a:hover {
-  background-color: #575757;
+  
   color: yellow;
 }
 
@@ -569,7 +569,7 @@ html, body {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #66035e;
+  background-color:  #470280f5;
   color: white;
   text-decoration: none;
   border-radius: 4px;
