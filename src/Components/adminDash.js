@@ -15,6 +15,7 @@ const AdminDash = () => {
       const response = await axios.get(url, config);
       return response.data;
     } catch (err) {
+      console.error('Error fetching resource:', err); // Log full error
       if (err.response && err.response.status === 401) {
         setError('Unauthorized access. Please check your authentication token.');
       } else {
@@ -23,6 +24,7 @@ const AdminDash = () => {
       return [];
     }
   };
+  
 
   const handleDeleteResource = async (url, id, config) => {
     try {
@@ -63,6 +65,7 @@ const AdminDash = () => {
     fetchData();
   }, []);
   
+
   const handleDeleteEvent = async (eventId) => {
     const token = localStorage.getItem('authToken');
     if (!token) throw new Error('No authentication token found.');

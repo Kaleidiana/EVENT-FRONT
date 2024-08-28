@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +21,7 @@ function Login() {
     event.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:4000/api/auth/registerUser', { // Correct endpoint for login
+      const response = await fetch('http://localhost:4000/api/auth/login', { // Correct endpoint for login
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -101,7 +102,7 @@ function Login() {
         <button type="submit">Login</button>
       </form>
 
-      <ToastContainer />
+      <ToastContainer className="toast-container" />
     </div>
   );
 }
