@@ -64,7 +64,7 @@ const Home = () => {
     <div className="home">
       <nav className="nav">
         <ul className="nav-list">
-        <h2>EVENTSPRO</h2>
+        <h2 className='nav-head'>EVENTSPRO</h2>
           <li className="nav-item"><Link to="/register">Register</Link></li>
           <li className="nav-item"><Link to="/login">Login</Link></li>
         </ul>
