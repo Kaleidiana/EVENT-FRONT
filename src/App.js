@@ -10,7 +10,7 @@ import UsersDash from './Components/UsersDash';
 import Events from './Components/Events';
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
-import Settings from './Components/Settings';
+import ContactUs from './Components/ContactUs';
 import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
 import './App.css';
 
@@ -49,7 +49,7 @@ function App() {
                       </ProtectedRoutes>
                     }
                   />
-                  <Route path="/settings" element={<Settings />} />
+                  <Route path="/contactus" element={<ContactUs />} />
                   <Route path="*" element={<NotFound />} />
 
                 </Routes>
