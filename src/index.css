@@ -865,3 +865,46 @@ html, body {
 .form-group textarea {
   resize: vertical;
 }
+/*Contact*/
+.contact-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.contact-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+
+.contact-link {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-link:hover {
+  color: #007bff;
+}
+
+.contact-icon {
+  width: 30px;
+  height: 30px;
+}

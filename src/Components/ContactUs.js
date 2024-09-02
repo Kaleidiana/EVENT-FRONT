@@ -1,72 +1,38 @@
-// EventsSettings.js
-import React, { useState } from 'react';
+import React from 'react';
 
 
-const Settings = () => {
-  const [eventTitle, setEventTitle] = useState('');
-  const [eventDate, setEventDate] = useState('');
-  const [eventLocation, setEventLocation] = useState('');
-  const [eventDescription, setEventDescription] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log({
-      eventTitle,
-      eventDate,
-      eventLocation,
-      eventDescription
-    });
-  };
-
+const Contact = () => {
   return (
-    <div className="events-settings-container">
-      <h1 className="settings-heading">Event Settings</h1>
-      <form className="settings-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="eventTitle">Event Title</label>
-          <input
-            type="text"
-            id="eventTitle"
-            value={eventTitle}
-            onChange={(e) => setEventTitle(e.target.value)}
-            required
-          />
+    <div className="contact-container">
+      <h1 className="contact-heading">Contact Us</h1>
+      <div className="contact-info">
+        <div className="contact-item">
+          <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-link">
+            <img src="path/to/instagram-icon.png" alt="Instagram" className="contact-icon" />
+            Instagram
+          </a>
         </div>
-        <div className="form-group">
-          <label htmlFor="eventDate">Event Date</label>
-          <input
-            type="date"
-            id="eventDate"
-            value={eventDate}
-            onChange={(e) => setEventDate(e.target.value)}
-            required
-          />
+        <div className="contact-item">
+          <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-link">
+            <img src="path/to/twitter-icon.png" alt="Twitter" className="contact-icon" />
+            Twitter
+          </a>
         </div>
-        <div className="form-group">
-          <label htmlFor="eventLocation">Event Location</label>
-          <input
-            type="text"
-            id="eventLocation"
-            value={eventLocation}
-            onChange={(e) => setEventLocation(e.target.value)}
-            required
-          />
+        <div className="contact-item">
+          <a href="mailto:youremail@example.com" className="contact-link">
+            <img src="path/to/email-icon.png" alt="Email" className="contact-icon" />
+            Email Us
+          </a>
         </div>
-        <div className="form-group">
-          <label htmlFor="eventDescription">Event Description</label>
-          <textarea
-            id="eventDescription"
-            value={eventDescription}
-            onChange={(e) => setEventDescription(e.target.value)}
-            rows="4"
-            required
-          ></textarea>
+        <div className="contact-item">
+          <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" className="contact-link">
+            <img src="path/to/whatsapp-icon.png" alt="WhatsApp" className="contact-icon" />
+            WhatsApp
+          </a>
         </div>
-        <button type="submit" className="submit-button">Save Settings</button>
-      </form>
+      </div>
     </div>
   );
 };
 
-export default Settings;
+export default Contact;

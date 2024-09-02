@@ -48,9 +48,9 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/settings" className={`nav-link ${activeComponent === 'Settings' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('Settings')}>
+                    <Link to="/ContactUs" className={`nav-link ${activeComponent === 'ContactUs' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('ContactUs')}>
                         <FontAwesomeIcon icon={faCog} /> {/* Settings */}
-                        <span className={isCollapsed ? 'hide-text' : ''}>SETTINGS</span>
+                        <span className={isCollapsed ? 'hide-text' : ''}>CONTACT US</span>
                     </Link>
                 </li>
                 {/* Add other links as needed */}
