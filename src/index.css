@@ -867,10 +867,11 @@ html, body {
 }
 /*Contact*/
 .contact-container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  background-color: rgb(221, 212, 212);
 }
 
 .contact-heading {
@@ -935,7 +936,13 @@ html, body {
 
 .contact-item {
   text-align: center;
+  transition: transform 0.3s ease; /* Smooth transition */
 }
+
+.contact-item:hover {
+  transform: scale(1.2); /* Scale up slightly */
+}
+
 
 .contact-link {
   text-decoration: none;
@@ -948,5 +955,6 @@ html, body {
 .contact-icon {
   width: 30px;
   height: 30px;
+ 
 }
 
