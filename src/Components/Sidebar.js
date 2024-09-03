@@ -50,7 +50,7 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
                 <li>
                     <Link to="/ContactUs" className={`nav-link ${activeComponent === 'ContactUs' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('ContactUs')}>
                         <FontAwesomeIcon icon={faCog} /> {/* Settings */}
-                        <span className={isCollapsed ? 'hide-text' : ''}>CONTACT US</span>
+                        <span className={isCollapsed ? 'hide-text' : ''}>CONTACT</span>
                     </Link>
                 </li>
                 {/* Add other links as needed */}

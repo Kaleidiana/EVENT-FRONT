@@ -2,34 +2,41 @@ import React from 'react';
 
 
 const Contact = () => {
+  const contacts = [
+    {
+      href: "https://www.instagram.com/yourprofile",
+      icon: "https://cdn-icons-png.flaticon.com/512/174/174855.png",
+      name: "Instagram"
+    },
+    {
+      href: "https://twitter.com/yourprofile",
+      icon: "https://cdn-icons-png.flaticon.com/512/733/733579.png",
+      name: "Twitter"
+    },
+    {
+      href: "mailto:youremail@example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+      name: "Email Us"
+    },
+    {
+      href: "https://wa.me/yourphonenumber",
+      icon: "https://cdn-icons-png.flaticon.com/512/733/733585.png",
+      name: "WhatsApp"
+    }
+  ];
+
   return (
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
       <div className="contact-info">
-        <div className="contact-item">
-          <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-link">
-            <img src="path/to/instagram-icon.png" alt="Instagram" className="contact-icon" />
-            Instagram
-          </a>
-        </div>
-        <div className="contact-item">
-          <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-link">
-            <img src="path/to/twitter-icon.png" alt="Twitter" className="contact-icon" />
-            Twitter
-          </a>
-        </div>
-        <div className="contact-item">
-          <a href="mailto:youremail@example.com" className="contact-link">
-            <img src="path/to/email-icon.png" alt="Email" className="contact-icon" />
-            Email Us
-          </a>
-        </div>
-        <div className="contact-item">
-          <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" className="contact-link">
-            <img src="path/to/whatsapp-icon.png" alt="WhatsApp" className="contact-icon" />
-            WhatsApp
-          </a>
-        </div>
+        {contacts.map((contact, index) => (
+          <div className="contact-item" key={index}>
+            <a href={contact.href} target="_blank" rel="noopener noreferrer" className="contact-link">
+              <img src={contact.icon} alt={contact.name} className="contact-icon" />
+              <span>{contact.name}</span>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );
