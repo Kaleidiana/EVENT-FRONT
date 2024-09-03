@@ -4,6 +4,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal'; // Import Modal Library
 
+// Ensure Modal is attached to the app element for accessibility
+Modal.setAppElement('#root');
+
 const AdminDash = () => {
   const [events, setEvents] = useState([]);
   const [users, setUsers] = useState([]);

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal'; // Import Modal from 'react-modal'
 import Card from './Card'; // Ensure this path is correct
 
+// Ensure you call Modal.setAppElement to prevent accessibility issues
+Modal.setAppElement('#root');
 
 const Events = () => {
-  // const [/*selectedEvent*/ setSelectedEvent] = useState(null);
+  // State for managing the selected event and modal visibility
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const cards = [
     {
@@ -104,20 +109,15 @@ const Events = () => {
     },
   ];
 
-  // const handleView = (event) => {
-  //   console.log(`View card with id: ${event.id}`);
-  //   // setSelectedEvent(event);
-  // };
+  const handleView = (event) => {
+    setSelectedEvent(event);
+    setIsModalOpen(true);
+  };
 
-  // const handleEdit = (id) => {
-  //   console.log(`Edit card with id: ${id}`);
-  //   // Implement the edit logic here
-  // };
-
-  // const handleDelete = (id) => {
-  //   console.log(`Delete card with id: ${id}`);
-  //   // Implement the delete logic here
-  // };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedEvent(null);
+  };
 
   return (
     <div className="events">
@@ -131,21 +131,30 @@ const Events = () => {
             content={card.content}
             price={card.price}
             location={card.location} 
-            // onView={() => handleView(card)}
-           
+            onView={() => handleView(card)}  // Pass the event handler
           />
         ))}
       </div>
 
-      {/* {selectedEvent && (
-        <div className="selected-event">
-          <h2>Selected Event</h2>
-          <h3>{selectedEvent.title}</h3>
-          <img src={selectedEvent.image} alt={selectedEvent.title} />
-          <p>{selectedEvent.content}</p>
-          <p>Price: {selectedEvent.price}</p>
-        </div>
-      )} */}
+      {/* Modal for viewing event details */}
+      <Modal 
+        isOpen={isModalOpen} 
+        onRequestClose={handleCloseModal} 
+        contentLabel="Event Details"
+        className="modal"  // Define modal styling in your CSS
+        overlayClassName="overlay"  // Define overlay styling in your CSS
+      >
+        {selectedEvent && (
+          <div>
+            <h2>{selectedEvent.title}</h2>
+            <img src={selectedEvent.image} alt={selectedEvent.title} />
+            <p>{selectedEvent.content}</p>
+            <p>Location: {selectedEvent.location}</p>
+            <p>Price: {selectedEvent.price}</p>
+            <button onClick={handleCloseModal}>Close</button>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };
