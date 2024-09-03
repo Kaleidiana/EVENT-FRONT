@@ -11,7 +11,7 @@ import Events from './Components/Events';
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
 import ContactUs from './Components/ContactUs';
-import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
+// import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
 import './App.css';
 
 function App() {
@@ -44,10 +44,8 @@ function App() {
                   <Route
                     path="/income"
                     element={
-                      <ProtectedRoutes allowedRoles={['admin']}>
-                        <Income />
-                      </ProtectedRoutes>
-                    }
+                    
+                        <Income />}
                   />
                   <Route path="/contactus" element={<ContactUs />} />
                   <Route path="*" element={<NotFound />} />
