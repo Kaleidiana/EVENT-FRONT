@@ -20,41 +20,31 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/*"
-          element={
-            <div className="App">
-              <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
-              <div className="content">
-                <Routes>
-                <Route path="/about" element={<About />} />
-                <Route path="/admindash" element={<AdminDash />} />
-                  <Route path="/sidebar" element={<Sidebar />} />
-                  
-                  
-                  
-                    
-                  
-                  <Route path="/events" element={<Events />} />
-                  <Route
-                    path="/income"
-                    element={
-                    
-                        <Income />}
-                  />
-                  <Route path="/contactus" element={<ContactUs />} />
-                  <Route path="*" element={<NotFound />} />
+     <Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/register" element={<Register />} />
+  <Route path="/login" element={<Login />} />
+  <Route
+    path="/*"
+    element={
+      <div className="App">
+        <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
+        <div className="content">
+          <Routes>
+          {/* <Route path="/sidebar" element={<Sidebar />} /> */}
+            <Route path="/about" element={<About />} />
+            <Route path="/admindash" element={<AdminDash />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/income" element={<Income />} />
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </div>
+    }
+  />
+</Routes>
 
-                </Routes>
-              </div>
-            </div>
-          }
-        />
-      </Routes>
     </Router>
   );
 }
