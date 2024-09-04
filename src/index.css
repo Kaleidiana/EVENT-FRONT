@@ -710,13 +710,15 @@ html, body {
 
 
 /* Actions Button Styles */
+/* Container for dropdown button */
 .actionsContainer {
   position: relative;
 }
 
+/* Button for actions */
 .actionsButton {
-  background-color: #5b02a3f5;  /* Orange background */
-  color: rgb(252, 249, 249);
+  background-color: #5b02a3f5; /* Example background color */
+  color: #fcf9f9; /* Example text color */
   border-radius: 4px;
   padding: 5px 10px;
   border: none;
@@ -724,10 +726,12 @@ html, body {
   font-size: 14px;
 }
 
+/* Hover effect for actions button */
 .actionsButton:hover {
-  background-color: hsl(24, 100%, 45%); /* Darker orange for hover effect */
+  background-color: #4a0072; /* Example darker color for hover effect */
 }
 
+/* Dropdown menu styling */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -746,28 +750,32 @@ html, body {
   border-radius: .25rem;
 }
 
+/* Show the dropdown menu */
 .dropdown-menu.show {
   display: block;
 }
 
+/* Styling for dropdown items */
 .dropdown-item {
   display: block;
   width: 100%;
   padding: .25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: green; /* Text color green */
   text-align: inherit;
   background-color: transparent;
   border: 0;
   border-radius: .25rem;
+  text-decoration: none; /* Remove underline */
 }
 
+/* Hover effect for dropdown items */
 .dropdown-item:hover {
-  color: #16181b;
-  text-decoration: none;
+  color: #16181b; /* Example hover text color */
   background-color: #f8f9fa;
 }
+
 
 /* Horizontal Line Styles */
 .hr-divider {
@@ -958,38 +966,11 @@ html, body {
  
 }
 /*Modal*/
-/* Styles.css */
-.card {
-  /* Add styles for the card */
+/*Crad.js*/
+.view-button{
+  width: 90%;
+  background-color:  #170250;
 }
-
-.view-button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  width: 80%;
-  max-width: 500px;
-}
-
-.close-button {
-  cursor: pointer;
-  margin-bottom: 10px;
+.view-button:hover{
+  background-color: rgb(57, 114, 133);
 }
