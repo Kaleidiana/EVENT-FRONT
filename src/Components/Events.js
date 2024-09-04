@@ -10,7 +10,6 @@ const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Sample data for events
   const cards = [
     {
       id: 1,
@@ -108,15 +107,14 @@ const Events = () => {
       location: 'CapeT',
       price: '$90'
     },
+    // ... add more events as needed
   ];
 
-  // Function to open the modal with event details
   const handleView = (event) => {
     setSelectedEvent(event);
     setIsModalOpen(true);
   };
 
-  // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedEvent(null);
@@ -148,13 +146,12 @@ const Events = () => {
         overlayClassName="overlay"  // Define overlay styling in your CSS
       >
         {selectedEvent && (
-          <div className="modal-content">
+          <div>
             <h2>{selectedEvent.title}</h2>
-            <img src={selectedEvent.image} alt={selectedEvent.title} className="modal-image" />
             <p>{selectedEvent.content}</p>
             <p>Location: {selectedEvent.location}</p>
             <p>Price: {selectedEvent.price}</p>
-            <button onClick={handleCloseModal} className="close-button">Close</button>
+            <button className="close-button" onClick={handleCloseModal}>Close</button>
           </div>
         )}
       </Modal>
