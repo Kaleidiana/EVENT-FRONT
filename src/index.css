@@ -1110,11 +1110,12 @@ html, body {
 
 /* Toast Container Adjustments */
 .Toastify__toast-container {
-  width: auto;
+  width: 100%;
+  margin-left: 1000px;
 }
 
 .Toastify__toast {
-  border-radius: 8px !important;
+  border-radius: 7px !important;
 }
 
 /*Crad.js*/
@@ -1124,4 +1125,63 @@ html, body {
 }
 .view-button:hover{
   background-color: rgb(57, 114, 133);
+}
+/*events modal*/
+/* Events Page Styling */
+.events {
+  padding: 20px;
+}
+
+.evv {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Modal Styling */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 50px auto;
+  position: relative;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #003d80;
 }
