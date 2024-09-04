@@ -1142,62 +1142,6 @@ body {
   text-align: center;
 }
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  width: 250px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-  overflow: hidden; /* Ensures that any overflowed content is hidden */
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card-image {
-  width: 100%;
-  height: auto; /* Ensures that the aspect ratio is preserved */
-  border-radius: 8px;
-  object-fit: cover; /* Ensures the image covers the area of the image container */
-}
-
-.card-title {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.card-content, .card-location, .card-price {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.view-button {
-  display: inline-block;
-  padding: 8px 12px;
-  margin-top: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 0.9rem;
-  text-decoration: none;
-}
-
-.view-button:hover {
-  background-color: #0056b3;
-}
-
 /* Modal Styling */
 .modal {
   position: relative;
