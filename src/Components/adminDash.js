@@ -153,9 +153,9 @@ const AdminDash = () => {
                   <td>{event.price}</td>
                   <td>
                     <div className="actionsContainer">
-                      <button onClick={() => handleViewEvent(event)}>View Event</button>
-                      <button onClick={() => handleEditEvent(event)}>Edit Event</button>
-                      <button onClick={() => handleDeleteEvent(event._id)}>Delete Event</button>
+                      <button onClick={() => handleViewEvent(event)}>View</button>
+                      <button onClick={() => handleEditEvent(event)}>Edit</button>
+                      <button onClick={() => handleDeleteEvent(event._id)}>Delete</button>
                     </div>
                   </td>
                 </tr>

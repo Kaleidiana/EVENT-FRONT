@@ -6,7 +6,6 @@ import Login from './Components/Login';
 import Sidebar from './Components/Sidebar';
 import About from './Components/About';
 import AdminDash from './Components/AdminDash';
-import UsersDash from './Components/UsersDash';
 import Events from './Components/Events';
 import Income from './Components/Income';
 import NotFound from './Components/NotFound';
@@ -38,7 +37,7 @@ function App() {
                   
                   
                   
-                    <Route path="/usersDash" element={<UsersDash />} />
+                    
                   
                   <Route path="/events" element={<Events />} />
                   <Route
