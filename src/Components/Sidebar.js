@@ -42,9 +42,9 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/Income" className={`nav-link ${activeComponent === 'Income' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('Income')}>
+                    <Link to="/Booking" className={`nav-link ${activeComponent === 'Booking' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('Booking')}>
                         <FontAwesomeIcon icon={faMoneyBillWave} /> {/* Income */}
-                        <span className={isCollapsed ? 'hide-text' : ''}>INCOME</span>
+                        <span className={isCollapsed ? 'hide-text' : ''}>BOOKING</span>
                     </Link>
                 </li>
                 <li>
