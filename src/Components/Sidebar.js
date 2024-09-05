@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCalendarDays, faUserTie, faMoneyBillWave, faCog, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCalendarDays, faMoneyBillWave, faCog, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = ({ setActiveComponent, activeComponent }) => {
     const [isCollapsed, setIsCollapsed] = React.useState(false);
@@ -35,12 +35,7 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
                         <span className={isCollapsed ? 'hide-text' : ''}>EVENTS</span>
                     </Link>
                 </li>
-                <li>
-                    <Link to="/UsersDash" className={`nav-link ${activeComponent === 'UsersDash' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('UsersDash')}>
-                        <FontAwesomeIcon icon={faUserTie} /> {/* Users Dashboard */}
-                        <span className={isCollapsed ? 'hide-text' : ''}>USERS</span>
-                    </Link>
-                </li>
+               
                 <li>
                     <Link to="/Booking" className={`nav-link ${activeComponent === 'Booking' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`} onClick={() => setActiveComponent('Booking')}>
                         <FontAwesomeIcon icon={faMoneyBillWave} /> {/* Income */}

@@ -10,7 +10,7 @@ import Events from './Components/Events';
 import Booking from './Components/Booking'; // Correctly imported Booking component
 import NotFound from './Components/NotFound';
 import ContactUs from './Components/ContactUs';
-// import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
+import EventDetails from './Components/EventDetails';
 import './App.css';
 
 function App() {
@@ -21,30 +21,24 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/*"
-          element={
-            <div className="App">
-              <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
-              <div className="content">
-                <Routes>
-                  {/* <Route path="/sidebar" element={<Sidebar />} /> */}
-                  <Route path="/about" element={<About />} />
-                  <Route path="/admindash" element={<AdminDash />} />
-                  <Route path="/events" element={<Events />} />
-                  <Route path="/booking" element={<Booking userId={currentUserId} />} />
-                  <Route path="/contactus" element={<ContactUs />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </div>
-            </div>
-          }
-        />
-      </Routes>
+      <div className="App">
+        <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
+        <div className="content">
+        <Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/register" element={<Register />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/about" element={<About />} />
+  <Route path="/admindash" element={<AdminDash />} />
+  <Route path="/events" element={<Events />} />
+  <Route path="/event/:id" element={<EventDetails />} />
+  <Route path="/booking" element={<Booking userId={currentUserId} />} />
+  <Route path="/contactus" element={<ContactUs />} />
+  <Route path="*" element={<NotFound />} />
+</Routes>
+
+        </div>
+      </div>
     </Router>
   );
 }
