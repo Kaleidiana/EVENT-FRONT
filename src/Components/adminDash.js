@@ -7,6 +7,20 @@ import Modal from 'react-modal'; // Import Modal Library
 // Ensure Modal is attached to the app element for accessibility
 Modal.setAppElement('#root');
 
+// Header Component
+const Header = () => (
+  <header className="admin-header">
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="#events">Manage Events</a></li>
+        <li><a href="#users">Manage Users</a></li>
+        <li><a href="#logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+);
+
 const AdminDash = () => {
   const [events, setEvents] = useState([]);
   const [users, setUsers] = useState([]);
@@ -126,6 +140,9 @@ const AdminDash = () => {
 
   return (
     <div className="container">
+      {/* Header Component */}
+      <Header />
+      
       <h3 className="heading">Admin Dashboard</h3>
       {loading && <p className="loading">Loading...</p>}
       {error && <p className="error">{error}</p>}

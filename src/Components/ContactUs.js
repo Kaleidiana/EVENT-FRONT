@@ -1,63 +1,51 @@
-import React, { useState } from 'react';
-import axios from 'axios'; // Ensure axios is installed
+import React from 'react';
 
 const Contact = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [success, setSuccess] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      await axios.post('http://your-server-endpoint/send-email', {
-        firstName,
-        lastName,
-        email,
-        message
-      });
-      setSuccess(true);
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setMessage('');
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  };
+  const contacts = [
+    {
+      href: "https://www.instagram.com/yourprofile",
+      icon: "https://cdn-icons-png.flaticon.com/512/174/174855.png",
+      name: "Instagram",
+    },
+    {
+      href: "https://twitter.com/yourprofile",
+      icon: "https://cdn-icons-png.flaticon.com/512/733/733579.png",
+      name: "Twitter",
+    },
+    {
+      href: "mailto:youremail@example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+      name: "Email Us",
+    },
+    {
+      href: "https://wa.me/yourphonenumber",
+      icon: "https://cdn-icons-png.flaticon.com/512/733/733585.png",
+      name: "WhatsApp",
+    },
+  ];
 
   return (
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          placeholder="First Name" 
-          value={firstName} 
-          onChange={(e) => setFirstName(e.target.value)} 
-        />
-        <input 
-          type="text" 
-          placeholder="Last Name" 
-          value={lastName} 
-          onChange={(e) => setLastName(e.target.value)} 
-        />
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-        />
-        <textarea 
-          placeholder="Message" 
-          value={message} 
-          onChange={(e) => setMessage(e.target.value)} 
-        />
-        <button type="submit">Submit</button>
-      </form>
-      {success && <div className="success-popup">Message sent successfully!</div>}
+      <h2 className="contact-subheading">Full Name</h2>
+      <div className="name-fields">
+        <input type="text" placeholder="First Name" className="contact-input first-name" />
+        <input type="text" placeholder="Last Name" className="contact-input last-name" />
+      </div>
+      <input type="email" placeholder="Email" className="contact-input email" />
+      <textarea placeholder="Message" className="contact-input-message"></textarea>
+      <button type="submit" className="contact-submit-button">Submit</button>
+      
+      <div className="contact-info">
+        {contacts.map((contact, index) => (
+          <div className="contact-item" key={index}>
+            <a href={contact.href} target="_blank" rel="noopener noreferrer" className="contact-link">
+              <img src={contact.icon} alt={contact.name} className="contact-icon" />
+              <span>{contact.name}</span>
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
