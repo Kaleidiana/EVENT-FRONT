@@ -39,13 +39,13 @@ const ContactUs = () => {
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
       <Web3Form
-        onSuccess={handleSuccess} // Correctly formatted callback function
-        onError={handleError} // Correctly formatted callback function
-        access_key="9d4665c7-05c1-475b-bb0b-292a2e3110a1" // Replace with your Web3 Forms API Key
-        to="kaleidiana63@gmail.com" // Correctly set recipient email address
+        access_key="YOUR_WEB3FORMS_API_KEY" // Replace with your Web3 Forms API Key
+        to="kaleidiana63@gmail.com" // Set recipient email address
+        subject="New Message from Contact Form" // Set email subject
+        onSuccess={handleSuccess} // Correct callback function
+        onError={handleError} // Correct callback function
         className="contact-form"
       >
-        {/* Properly formatted input elements */}
         <div className="name-fields">
           <input
             type="text"
@@ -80,7 +80,6 @@ const ContactUs = () => {
         </button>
       </Web3Form>
 
-      {/* Contact Information Section */}
       <div className="contact-info">
         {contacts.map((contact, index) => (
           <div className="contact-item" key={index}>
