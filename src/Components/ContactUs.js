@@ -1,5 +1,5 @@
 import React from 'react';
-import { Web3Forms } from '@web3forms/react'; // Use named import
+import Web3Forms from '@web3forms/react'; // Use default import
 
 const ContactUs = () => {
   const contacts = [
@@ -25,12 +25,22 @@ const ContactUs = () => {
     },
   ];
 
+  const handleSuccess = (message) => {
+    console.log('Success message:', message); // Debugging output
+    alert('Message sent successfully!');
+  };
+
+  const handleError = (message) => {
+    console.log('Error message:', message); // Debugging output
+    alert('Error sending message.');
+  };
+
   return (
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
       <Web3Forms
-        onSuccess={(message) => alert('Message sent successfully!')} // Display success message
-        onError={(message) => alert('Error sending message.')} // Display error message
+        onSuccess={handleSuccess} // Use proper callback function
+        onError={handleError} // Use proper callback function
         access_key="YOUR_WEB3FORMS_API_KEY" // Replace with your Web3 Forms API Key
         className="contact-form"
       >
@@ -42,7 +52,7 @@ const ContactUs = () => {
         <textarea name="message" placeholder="Message" className="contact-input-message" required></textarea>
         <button type="submit" className="contact-submit-button">Submit</button>
       </Web3Forms>
-      
+
       <div className="contact-info">
         {contacts.map((contact, index) => (
           <div className="contact-item" key={index}>
