@@ -17,7 +17,7 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/9391354/pexels-photo-9391354.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Join us for the launch of our exciting new product!',
       location: 'Mpaka',
-      price: '$150'
+      ticket: 'Ksh.1500'
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/3172566/pexels-photo-3172566.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Celebrate the beautiful union of two souls.',
       location: 'Sweden',
-      price: '$200'
+      ticket: 'Ksh.2000'
     },
     {
       id: 3,
@@ -33,7 +33,7 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/1557140/pexels-photo-1557140.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'A joyful celebration of life and milestones.',
       location: 'Shinzy',
-      price: '$100'
+      ticket: 'Ksh.2350'
     },
     {
       id: 4,
@@ -41,7 +41,7 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/2893330/pexels-photo-2893330.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Experience the vibrant colors and traditions of our festival.',
       location: 'Miles',
-      price: '$75'
+      ticket: 'Ksh.3300'
     },
     {
       id: 5,
@@ -49,7 +49,7 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/7788009/pexels-photo-7788009.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Support a great cause and make a difference.',
       location: 'Bora',
-      price: '$50'
+      ticket: 'Ksh.5000'
     },
     {
       id: 6,
@@ -57,7 +57,7 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/1884576/pexels-photo-1884576.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Cheer for your favorite team in this exciting match!',
       location: 'Iowa',
-      price: '$120'
+      ticket: 'Ksh.1450'
     },
     {
       id: 7,
@@ -65,7 +65,7 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/6518909/pexels-photo-6518909.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Discover the latest innovations at our trade show.',
       location: 'Venice',
-      price: '$250'
+      ticket: 'Ksh.2500'
     },
     {
       id: 8,
@@ -73,39 +73,40 @@ const Events = () => {
       image: 'https://images.pexels.com/photos/24023589/pexels-photo-24023589/free-photo-of-women-sitting-and-reading-at-gathering.jpeg?auto=compress&cs=tinysrgb&w=600',
       content: 'Learn from experts in our upcoming webinar.',
       location: 'Salem',
-      price: '$30'
+      ticket: 'Ksh.4000'
     },
     {
       id: 9,
-      title: 'Workshop',
-      image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Hands-on learning with industry professionals.',
+      title: 'Webhook',
+      image: 'https://images.pexels.com/photos/28103053/pexels-photo-28103053/free-photo-of-a-panoramic-view-of-timeout-market.jpeg?auto=compress&cs=tinysrgb&w=600',
+      content: 'Allows you to receive notifications event occurs',
       location: 'Kidel',
-      price: '$90'
+      ticket: 'Ksh.4000'
+     
     },
     {
       id: 10,
-      title: 'Workshop',
-      image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Hands-on learning with industry professionals.',
+      title: 'WorksLive Streams',
+      image: 'https://images.pexels.com/photos/7648474/pexels-photo-7648474.jpeg?auto=compress&cs=tinysrgb&w=600',
+      content: 'Real-time broadcasts, live performances.hop',
       location: 'Tiara',
-      price: '$90'
+      ticket: 'Ksh.3200'
     },
     {
       id: 11,
-      title: 'Workshop',
+      title: 'Cruise Events',
       image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Hands-on learning with industry professionals.',
+      content: 'Themed cruises, special voyages',
       location: 'Choka',
-      price: '$90'
+      ticket: 'Ksh.2000'
     },
     {
       id: 12,
-      title: 'Workshop',
-      image: 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Hands-on learning with industry professionals.',
+      title: 'Virtual Conferences',
+      image: 'https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&cs=tinysrgb&w=600',
+      content: ' Online networking, remote learning',
       location: 'CapeT',
-      price: '$90'
+      ticket: 'Ksh.2000'
     },
     // ... add more events as needed
   ];
@@ -130,7 +131,7 @@ const Events = () => {
             title={card.title} 
             image={card.image} 
             content={card.content}
-            price={card.price}
+            ticket={card.ticket}
             location={card.location} 
             onView={() => handleView(card)}  // Pass the event handler
           />

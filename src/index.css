@@ -51,7 +51,7 @@
   margin-bottom: 10px;
   cursor: pointer;
   display: flex;
-  line-height: 2.5;
+  line-height: 2.7;
   align-items: center;
   position: relative;
   transition: color 0.3s ease-in-out;
@@ -66,12 +66,31 @@
   color: #ffd700; /* Change text color on hover */
 }
 
+
 .sidebar ul li svg {
   margin-right: 10px; /* Adjust margin between icon and text */
   fill: currentColor;
   width: 20px;
   height: 20px;
   flex-shrink: 0; /* Ensure the icon does not shrink */
+}
+/* Sidebar link styles */
+.sidebar a {
+  text-decoration: none; /* Remove underline from links */
+  color: grey; /* Default link color */
+  transition: color 0.3s, background-color 0.3s; /* Smooth transition for color and background */
+}
+
+/* Hover effect */
+.sidebar a:hover {
+  color: yellow; /* Change text color to yellow on hover */
+}
+
+/* Active link styles */
+.sidebar a.active {
+  /* Active link background color */
+  color: yellow; /* Active link text color */
+  font-weight: bold; /* Optional: highlight active link */
 }
 
 .sidebar.collapsed ul li svg {
@@ -393,7 +412,6 @@ html, body {
 
 .events h1 {
   font-size: 30px;
-  margin-bottom: 20px;
   color: black;
   margin: 1px;
 }
