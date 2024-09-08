@@ -26,7 +26,7 @@ function Login() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-
+  
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Login failed:', errorText);
@@ -74,6 +74,7 @@ function Login() {
       });
     }
   };
+  
 
   return (
     <div className="login-container">

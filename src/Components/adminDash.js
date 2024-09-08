@@ -7,20 +7,6 @@ import Modal from 'react-modal'; // Import Modal Library
 // Ensure Modal is attached to the app element for accessibility
 Modal.setAppElement('#root');
 
-// Header Component
-const Header = () => (
-  <header className="admin-header">
-    <h1>Admin Dashboard</h1>
-    <nav>
-      <ul>
-        <li><a href="#events">Manage Events</a></li>
-        <li><a href="#users">Manage Users</a></li>
-        <li><a href="#logout">Logout</a></li>
-      </ul>
-    </nav>
-  </header>
-);
-
 const AdminDash = () => {
   const [events, setEvents] = useState([]);
   const [users, setUsers] = useState([]);
@@ -29,6 +15,7 @@ const AdminDash = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [editEvent, setEditEvent] = useState(null);
 
+  // Utility function to fetch resources
   const fetchResource = async (url, config) => {
     try {
       const response = await axios.get(url, config);
@@ -44,6 +31,7 @@ const AdminDash = () => {
     }
   };
 
+  // Utility function to handle deletion of resources
   const handleDeleteResource = async (url, id, config) => {
     try {
       await axios.delete(`${url}/${id}`, config);
@@ -53,6 +41,7 @@ const AdminDash = () => {
     }
   };
 
+  // Effect to fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -67,12 +56,16 @@ const AdminDash = () => {
           },
         };
 
+        // Fetch events data
         const eventsResponse = await fetchResource('http://localhost:4000/api/events', config);
         setEvents(eventsResponse);
 
+        // Fetch users data
         const usersResponse = await fetchResource('http://localhost:4000/api/users/getAllUsers', config);
+        console.log('Fetched Users:', usersResponse); // Log the response for debugging
         setUsers(usersResponse);
       } catch (err) {
+        console.error('Error fetching data:', err); // More detailed logging
         setError('Error fetching data: ' + err.message);
       } finally {
         setLoading(false);
@@ -82,6 +75,7 @@ const AdminDash = () => {
     fetchData();
   }, []);
 
+  // Function to handle deleting an event
   const handleDeleteEvent = async (eventId) => {
     const token = localStorage.getItem('authToken');
     if (!token) throw new Error('No authentication token found.');
@@ -96,6 +90,7 @@ const AdminDash = () => {
     setEvents(events.filter((event) => event._id !== eventId));
   };
 
+  // Function to handle deleting a user
   const handleDeleteUser = async (userId) => {
     const token = localStorage.getItem('authToken');
     if (!token) throw new Error('No authentication token found.');
@@ -110,6 +105,7 @@ const AdminDash = () => {
     setUsers(users.filter((user) => user._id !== userId));
   };
 
+  // Handlers for viewing and editing events
   const handleViewEvent = (event) => {
     setSelectedEvent(event);
   };
@@ -140,14 +136,11 @@ const AdminDash = () => {
 
   return (
     <div className="container">
-      {/* Header Component */}
-      <Header />
-      
       <h3 className="heading">Admin Dashboard</h3>
       {loading && <p className="loading">Loading...</p>}
       {error && <p className="error">{error}</p>}
 
-      {/* Manage Events */}
+      {/* Manage Events Section */}
       <div className="manageSection">
         <h3 className="sectionHeading">Manage Events</h3>
         <div className="tableContainer">
@@ -221,6 +214,7 @@ const AdminDash = () => {
         </Modal>
       )}
 
+      {/* Toast Notifications */}
       <ToastContainer />
     </div>
   );

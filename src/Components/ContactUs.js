@@ -1,6 +1,7 @@
 import React from 'react';
+import { Web3Forms } from '@web3forms/react'; // Use named import
 
-const Contact = () => {
+const ContactUs = () => {
   const contacts = [
     {
       href: "https://www.instagram.com/yourprofile",
@@ -27,14 +28,20 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
-      <h2 className="contact-subheading">Full Name</h2>
-      <div className="name-fields">
-        <input type="text" placeholder="First Name" className="contact-input first-name" />
-        <input type="text" placeholder="Last Name" className="contact-input last-name" />
-      </div>
-      <input type="email" placeholder="Email" className="contact-input email" />
-      <textarea placeholder="Message" className="contact-input-message"></textarea>
-      <button type="submit" className="contact-submit-button">Submit</button>
+      <Web3Forms
+        onSuccess={(message) => alert('Message sent successfully!')} // Display success message
+        onError={(message) => alert('Error sending message.')} // Display error message
+        access_key="YOUR_WEB3FORMS_API_KEY" // Replace with your Web3 Forms API Key
+        className="contact-form"
+      >
+        <div className="name-fields">
+          <input type="text" name="first_name" placeholder="First Name" className="contact-input first-name" required />
+          <input type="text" name="last_name" placeholder="Last Name" className="contact-input last-name" required />
+        </div>
+        <input type="email" name="email" placeholder="Email" className="contact-input email" required />
+        <textarea name="message" placeholder="Message" className="contact-input-message" required></textarea>
+        <button type="submit" className="contact-submit-button">Submit</button>
+      </Web3Forms>
       
       <div className="contact-info">
         {contacts.map((contact, index) => (
@@ -50,4 +57,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactUs;
