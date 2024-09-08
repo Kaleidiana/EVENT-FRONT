@@ -1,5 +1,5 @@
 import React from 'react';
-import Web3Forms from '@web3forms/react'; // Use default import
+import Web3Form from '@web3forms/react'; // Import the correct default export
 
 const ContactUs = () => {
   const contacts = [
@@ -14,7 +14,7 @@ const ContactUs = () => {
       name: "Twitter",
     },
     {
-      href: "mailto:youremail@example.com",
+      href: "mailto:kaleidiana63@gmail.com",
       icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
       name: "Email Us",
     },
@@ -38,25 +38,58 @@ const ContactUs = () => {
   return (
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
-      <Web3Forms
-        onSuccess={handleSuccess} // Use proper callback function
-        onError={handleError} // Use proper callback function
-        access_key="YOUR_WEB3FORMS_API_KEY" // Replace with your Web3 Forms API Key
+      <Web3Form
+        onSuccess={handleSuccess} // Correctly formatted callback function
+        onError={handleError} // Correctly formatted callback function
+        access_key="9d4665c7-05c1-475b-bb0b-292a2e3110a1" // Replace with your Web3 Forms API Key
+        to="kaleidiana63@gmail.com" // Correctly set recipient email address
         className="contact-form"
       >
+        {/* Properly formatted input elements */}
         <div className="name-fields">
-          <input type="text" name="first_name" placeholder="First Name" className="contact-input first-name" required />
-          <input type="text" name="last_name" placeholder="Last Name" className="contact-input last-name" required />
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            className="contact-input first-name"
+            required
+          />
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Last Name"
+            className="contact-input last-name"
+            required
+          />
         </div>
-        <input type="email" name="email" placeholder="Email" className="contact-input email" required />
-        <textarea name="message" placeholder="Message" className="contact-input-message" required></textarea>
-        <button type="submit" className="contact-submit-button">Submit</button>
-      </Web3Forms>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          className="contact-input email"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Message"
+          className="contact-input-message"
+          required
+        ></textarea>
+        <button type="submit" className="contact-submit-button">
+          Submit
+        </button>
+      </Web3Form>
 
+      {/* Contact Information Section */}
       <div className="contact-info">
         {contacts.map((contact, index) => (
           <div className="contact-item" key={index}>
-            <a href={contact.href} target="_blank" rel="noopener noreferrer" className="contact-link">
+            <a
+              href={contact.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-link"
+            >
               <img src={contact.icon} alt={contact.name} className="contact-icon" />
               <span>{contact.name}</span>
             </a>
