@@ -7,7 +7,6 @@ import Sidebar from './Components/Sidebar';
 import About from './Components/About';
 import AdminDash from './Components/AdminDash';
 import Events from './Components/Events';
-import Booking from './Components/Booking'; // Import the Booking component
 import NotFound from './Components/NotFound';
 import ContactUs from './Components/ContactUs';
 // import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
@@ -17,7 +16,7 @@ function App() {
   const [activeComponent, setActiveComponent] = React.useState('');
   
   // Define a dummy currentUserId. Replace with actual logic to get the current user ID.
-  const currentUserId = 'dummyUserId'; // Replace with actual user ID retrieval logic
+  
 
   return (
     <Router>
@@ -36,7 +35,6 @@ function App() {
                   <Route path="/about" element={<About />} />
                   <Route path="/admindash" element={<AdminDash />} />
                   <Route path="/events" element={<Events />} />
-                  <Route path="/booking" element={<Booking userId={currentUserId} />} />
                   <Route path="/contactus" element={<ContactUs />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

@@ -30,10 +30,9 @@
 
 .h2 {
   margin-bottom: 20px;
-  /* transition: opacity 0.3s ease-in-out; */
   color: hsl(64, 100%, 51%); /* Title color */
   font-size: 1.6rem;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .h2.hidden {
@@ -63,17 +62,10 @@
 }
 
 .sidebar ul li:hover {
-  color: #ffd700; /* Change text color on hover */
+  color: #f7f7f7; /* Change text color on hover */
+  /* Change background color on hover */
 }
 
-
-.sidebar ul li svg {
-  margin-right: 10px; /* Adjust margin between icon and text */
-  fill: currentColor;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0; /* Ensure the icon does not shrink */
-}
 /* Sidebar link styles */
 .sidebar a {
   text-decoration: none; /* Remove underline from links */
@@ -84,26 +76,31 @@
 /* Hover effect */
 .sidebar a:hover {
   color: yellow; /* Change text color to yellow on hover */
+ /* Change background color to white on hover */
 }
 
 /* Active link styles */
 .sidebar a.active {
-  /* Active link background color */
   color: yellow; /* Active link text color */
-  font-weight: bold; /* Optional: highlight active link */
+  font-weight: bold;
+   /* Optional: highlight active link */
+  /* Active link background color */
 }
 
 .sidebar.collapsed ul li svg {
   margin-right: 0; /* Remove margin when sidebar is collapsed */
-  color: rgb(229, 233, 11);
+  color: rgb(238, 235, 235);
 }
 
+.sidebar.collapsed .nav-link.active svg {
+  color: yellow; /* Active icon color when collapsed */
+}
 .hide-text {
   display: none; /* Hide text when sidebar is collapsed */
 }
 
 .sidebar ul li a {
-  color: white; /* Link text color */
+  color: rgb(255, 255, 255); /* Link text color */
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -119,7 +116,9 @@
 
 .sidebar ul li a:hover {
   color: #ffd700; /* Link text color on hover */
+/* Background color on hover */
 }
+
 .content {
   margin-left: 70px; /* Sidebar width */
   padding: 20px; /* Adjust padding as needed */
