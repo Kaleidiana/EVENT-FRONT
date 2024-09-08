@@ -1,15 +1,15 @@
 import React from 'react';
-import Web3Form from '@web3forms/react'; // Import the correct default export
 
 const ContactUs = () => {
+  // Array to hold contact details
   const contacts = [
     {
-      href: "https://www.instagram.com/yourprofile",
+      href: "https://www.instagram.com/iss_deedee",
       icon: "https://cdn-icons-png.flaticon.com/512/174/174855.png",
       name: "Instagram",
     },
     {
-      href: "https://twitter.com/yourprofile",
+      href: "https://twitter.com/itsjustdiana",
       icon: "https://cdn-icons-png.flaticon.com/512/733/733579.png",
       name: "Twitter",
     },
@@ -19,33 +19,71 @@ const ContactUs = () => {
       name: "Email Us",
     },
     {
-      href: "https://wa.me/yourphonenumber",
+      href: "https://wa.me/0796215088",
       icon: "https://cdn-icons-png.flaticon.com/512/733/733585.png",
       name: "WhatsApp",
     },
   ];
 
-  const handleSuccess = (message) => {
-    console.log('Success message:', message); // Debugging output
+  // Handle successful form submission
+  const handleSuccess = (response) => {
+    console.log('Success response:', response);
     alert('Message sent successfully!');
   };
 
-  const handleError = (message) => {
-    console.log('Error message:', message); // Debugging output
+  // Handle form submission errors
+  const handleError = (error) => {
+    console.log('Error response:', error);
     alert('Error sending message.');
+  };
+
+  // Handle form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    try {
+      // Fetch request to Web3Forms API
+      const response = await fetch('https://web3forms.com/api/v1/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        handleSuccess(result);
+      } else {
+        handleError(result);
+      }
+    } catch (error) {
+      handleError(error);
+    }
   };
 
   return (
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
-      <Web3Form
-        access_key="YOUR_WEB3FORMS_API_KEY" // Replace with your Web3 Forms API Key
-        to="kaleidiana63@gmail.com" // Set recipient email address
-        subject="New Message from Contact Form" // Set email subject
-        onSuccess={handleSuccess} // Correct callback function
-        onError={handleError} // Correct callback function
+      <form
         className="contact-form"
+        onSubmit={handleSubmit}
       >
+        <input
+          type="hidden"
+          name="access_key"
+          value="9d4665c7-05c1-475b-bb0b-292a2e3110a1" // Replace with your Web3 Forms API Key
+        />
+        <input
+          type="hidden"
+          name="to"
+          value="kaleidiana63@gmail.com" // Correctly set recipient email address
+        />
+        <input
+          type="hidden"
+          name="subject"
+          value="New Message from Contact Form" // Set email subject
+        />
+
         <div className="name-fields">
           <input
             type="text"
@@ -78,7 +116,7 @@ const ContactUs = () => {
         <button type="submit" className="contact-submit-button">
           Submit
         </button>
-      </Web3Form>
+      </form>
 
       <div className="contact-info">
         {contacts.map((contact, index) => (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Modal from 'react-modal'; // Import Modal Library
+import Modal from 'react-modal';
 
 // Ensure Modal is attached to the app element for accessibility
 Modal.setAppElement('#root');
@@ -35,7 +35,7 @@ const AdminDash = () => {
   const handleDeleteResource = async (url, id, config) => {
     try {
       await axios.delete(`${url}/${id}`, config);
-      toast.success(`Resource deleted successfully`);
+      toast.success('Resource deleted successfully');
     } catch (err) {
       toast.error('Error deleting resource: ' + err.message);
     }
@@ -174,6 +174,35 @@ const AdminDash = () => {
           </table>
         </div>
       </div>
+
+      {/* Manage Users Section */}
+      <div className="manageSection">
+  <h3 className="sectionHeading">Manage Users</h3>
+  <div className="tableContainer">
+    <table className="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user) => (
+          <tr key={user._id}>
+            <td>{user.firstname}</td>
+            <td>{user.lastname}</td>
+            <td>{user.gender}</td>
+            <td>
+              <button onClick={() => handleDeleteUser(user._id)}>Delete</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
 
       {/* View Event Modal */}
       {selectedEvent && (
