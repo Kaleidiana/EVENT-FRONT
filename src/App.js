@@ -3,20 +3,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import Register from './Components/Register';
 import Login from './Components/Login';
-import Sidebar from './Components/Sidebar';
 import About from './Components/About';
 import AdminDash from './Components/AdminDash';
 import Events from './Components/Events';
 import NotFound from './Components/NotFound';
 import ContactUs from './Components/ContactUs';
-// import ProtectedRoutes from './Components/ProtectedRoutes'; // Ensure this is correct
+import Layout from './Components/Layout'; // Ensure path is correct
 import './App.css';
 
 function App() {
   const [activeComponent, setActiveComponent] = React.useState('');
-  
-  // Define a dummy currentUserId. Replace with actual logic to get the current user ID.
-  
 
   return (
     <Router>
@@ -27,19 +23,15 @@ function App() {
         <Route
           path="/*"
           element={
-            <div className="App">
-              <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
-              <div className="content">
-                <Routes>
-                  {/* <Route path="/sidebar" element={<Sidebar />} /> */}
-                  <Route path="/about" element={<About />} />
-                  <Route path="/admindash" element={<AdminDash />} />
-                  <Route path="/events" element={<Events />} />
-                  <Route path="/contactus" element={<ContactUs />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </div>
-            </div>
+            <Layout setActiveComponent={setActiveComponent} activeComponent={activeComponent}>
+              <Routes>
+                <Route path="about" element={<About />} />
+                <Route path="admindash" element={<AdminDash />} />
+                <Route path="events" element={<Events />} />
+                <Route path="contactus" element={<ContactUs />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Layout>
           }
         />
       </Routes>

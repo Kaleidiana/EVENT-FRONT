@@ -86,6 +86,10 @@
    /* Optional: highlight active link */
   /* Active link background color */
 }
+.layout {
+  display: flex;
+}
+
 
 .sidebar.collapsed ul li svg {
   margin-right: 0; /* Remove margin when sidebar is collapsed */
@@ -127,6 +131,30 @@
 
 .sidebar.collapsed ~ .content {
   margin-left: 20px; /* Adjust for collapsed sidebar */
+}
+.layout {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  position: relative;
+  padding: 20px;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 0.1px;
+  right: 13px;
+  background: none;
+  border: none;
+  color: #ffebeb; /* Adjust color based on your design */
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout-btn:hover {
+  color: #888; /* Adjust hover color based on your design */
 }
 
 /* Main Content Styles */
