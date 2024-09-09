@@ -1,12 +1,12 @@
 import React from 'react';
-import Sidebar from './Sidebar'; // Ensure path is correct
+import  AdminSidebar from './AdminSidebar'; // Ensure path is correct
 import { Outlet } from 'react-router-dom';
 
 
-const Layout = () => {
+const AdminLayout = () => {
   return (
     <div className="layout">
-      <Sidebar/>
+      <AdminSidebar  />
       <main className="content">
         <Outlet/>
       </main>
@@ -14,4 +14,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default AdminLayout;

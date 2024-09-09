@@ -37,52 +37,19 @@ const ContactUs = () => {
     alert('Error sending message.');
   };
 
-  // Handle form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    try {
-      // Fetch request to Web3Forms API
-      const response = await fetch('https://web3forms.com/api/v1/contact', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        handleSuccess(result);
-      } else {
-        handleError(result);
-      }
-    } catch (error) {
-      handleError(error);
-    }
-  };
+  
 
   return (
     <div className="contact-container">
       <h1 className="contact-heading">Contact Us</h1>
-      <form
-        className="contact-form"
-        onSubmit={handleSubmit}
-      >
+      <form action="https://api.web3forms.com/submit" method="POST">
+
         <input
           type="hidden"
           name="access_key"
           value="9d4665c7-05c1-475b-bb0b-292a2e3110a1" // Replace with your Web3 Forms API Key
         />
-        <input
-          type="hidden"
-          name="to"
-          value="kaleidiana63@gmail.com" // Correctly set recipient email address
-        />
-        <input
-          type="hidden"
-          name="subject"
-          value="New Message from Contact Form" // Set email subject
-        />
+      
 
         <div className="name-fields">
           <input

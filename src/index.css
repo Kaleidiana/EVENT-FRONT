@@ -144,8 +144,8 @@
 
 .logout-btn {
   position: absolute;
-  top: 0.1px;
-  right: 13px;
+  top: 180px;
+  right: 10px;
   background: none;
   border: none;
   color: #ffebeb; /* Adjust color based on your design */
@@ -154,7 +154,7 @@
 }
 
 .logout-btn:hover {
-  color: #888; /* Adjust hover color based on your design */
+  color: #fffbfb; /* Adjust hover color based on your design */
 }
 
 /* Main Content Styles */

@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function Login() {
+function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ function Login() {
         
         // Redirect after successful login
         setTimeout(() => {
-          navigate('/user/events');
+          navigate('/admin/admindash');
         }, 2000);
       }
     } catch (error) {
@@ -79,7 +79,7 @@ function Login() {
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
+        <h2>Admin Login</h2>
         <div>
           <label>Email:</label>
           <input
@@ -108,4 +108,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default AdminLogin;

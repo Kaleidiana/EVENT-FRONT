@@ -67,6 +67,7 @@ const Home = () => {
         <h2 className='nav-head'>EVENTSPRO</h2>
           <li className="nav-item"><Link to="/register">Register</Link></li>
           <li className="nav-item"><Link to="/login">Login</Link></li>
+         
         </ul>
       </nav>
       <h1 className="popular">Popular Events in EventsPro</h1>
