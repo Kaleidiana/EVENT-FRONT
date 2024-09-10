@@ -2,18 +2,26 @@
 .sidebar {
   background-color: #070144;
   color: white;
-  width: 125px;
-  height: 100vh;
+  width: 125px; /* Adjust as needed */
+  height: 100vh; /* Ensures full height of viewport */
   padding: 20px;
-  position: fixed;
+  position:sticky; /* Keeps it in place */
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-y: auto;
-  z-index: 1000;
+  overflow-y: auto; /* Allows for scrolling if content exceeds viewport height */
+  z-index: 1000; /* Ensures it stays on top */
 }
+
+#sidebarList{
+  position:sticky;
+}
+#sidebarHead{
+  position:sticky;
+}
+
 
 .sidebar.collapsed {
   width: 20px; /* Adjust width when collapsed */
@@ -374,7 +382,7 @@ html, body {
 /* App.css */
 
 /* Dashboard.css */
-
+/* Dashboard */
 .dashboard {
   padding: 20px;
   color: black;
@@ -382,16 +390,15 @@ html, body {
 }
 
 .dashboard-title {
-  color: #080308; /* Adjust title color */
-  
+  color: #080308;
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 20px; /* gap between cards */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .card {
@@ -430,6 +437,17 @@ html, body {
   background-color: #0056b3;
 }
 
+/* Responsive Design for Dashboard */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+
+  .card {
+    margin: 8px; /* Adjust margin */
+  }
+}
+
 /*events*/
 
 .events {
@@ -447,6 +465,7 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 1px;
   overflow: hidden;
+  margin-right: 60px !important;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #d4d1d1af;
 }
@@ -495,7 +514,8 @@ html, body {
   margin-top: 2px;
 }
 .events{
-  margin-left: 120px;
+  margin-left: 2px;
+  width: 85%;
   
 }
 .evv{
@@ -530,7 +550,6 @@ html, body {
   grid-template-columns: repeat(4, 1fr); /* 4 columns */
   gap: 50px; /* Space between the cards */
   margin: 2px;
-  margin-right: 70px;
   row-gap: 18px;
   
 }
@@ -644,35 +663,6 @@ html, body {
 .view-more-button:hover {
   background-color: #0056b3;
 }
-
-
-/*USERS DASH/
-
-/* UsersDash.css */
-.users-dash {
-  padding: 20px;
-}
-
-.users-dash h1 {
-  margin-bottom: 20px;
-}
-
-.users-dash table {
-  width: 80%;
-  border-collapse: collapse;
-  margin-left: 13%;
-}
-
-.users-dash th, .users-dash td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-.users-dash th {
-  background-color: #f4f4f4;
-}
-
 
 
 /* ADMIN DASH */

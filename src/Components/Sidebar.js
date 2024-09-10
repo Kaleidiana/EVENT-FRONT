@@ -22,8 +22,8 @@ const Sidebar = () => {
             <div className="toggle-btn" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faBars} />
             </div>
-            <h2 className={`h2 ${isCollapsed ? 'hidden' : ''}`}>EVENTPRO</h2>
-            <ul>
+            <h2 id='sidebarHead' className={`h2 ${isCollapsed ? 'hidden' : ''}`}>EVENTPRO</h2>
+            <ul id='sidebarList'>
                 <li>
                     <Link
                         to="/user/about"

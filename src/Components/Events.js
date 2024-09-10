@@ -15,7 +15,7 @@ const Events = () => {
       id: 1,
       title: 'Product Launch',
       image: 'https://images.pexels.com/photos/9391354/pexels-photo-9391354.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Join us for the launch of our exciting new product!',
+      content: 'Join us for the launch of our exciting new!',
       location: 'Mpaka',
       ticket: 'Ksh.1500'
     },
@@ -23,7 +23,7 @@ const Events = () => {
       id: 2,
       title: 'Wedding',
       image: 'https://images.pexels.com/photos/3172566/pexels-photo-3172566.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Celebrate the beautiful union of two souls.',
+      content: 'Celebrate the beautiful union of 2 souls.',
       location: 'Sweden',
       ticket: 'Ksh.2000'
     },
@@ -31,7 +31,7 @@ const Events = () => {
       id: 3,
       title: 'Birthday Party',
       image: 'https://images.pexels.com/photos/1557140/pexels-photo-1557140.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'A joyful celebration of life and milestones.',
+      content: 'A joyful celebration of life and milestones party.',
       location: 'Shinzy',
       ticket: 'Ksh.2350'
     },
@@ -39,7 +39,7 @@ const Events = () => {
       id: 4,
       title: 'Festival',
       image: 'https://images.pexels.com/photos/2893330/pexels-photo-2893330.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Experience the vibrant colors and traditions of our festival.',
+      content: 'Experience the vibrant colors and tradition.',
       location: 'Miles',
       ticket: 'Ksh.3300'
     },
@@ -55,7 +55,7 @@ const Events = () => {
       id: 6,
       title: 'Match',
       image: 'https://images.pexels.com/photos/1884576/pexels-photo-1884576.jpeg?auto=compress&cs=tinysrgb&w=600',
-      content: 'Cheer for your favorite team in this exciting match!',
+      content: 'Cheer for your favorite team in this match!',
       location: 'Iowa',
       ticket: 'Ksh.1450'
     },
