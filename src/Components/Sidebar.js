@@ -24,6 +24,16 @@ const Sidebar = () => {
             </div>
             <h2 id='sidebarHead' className={`h2 ${isCollapsed ? 'hidden' : ''}`}>EVENTPRO</h2>
             <ul id='sidebarList'>
+            <li>
+                    <Link
+                        to="/user/events"
+                        className={`nav-link ${location.pathname === '/events' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
+                    >
+                        <FontAwesomeIcon icon={faCog} /> {/* Events */}
+                        <span className={isCollapsed ? 'hide-text' : ''}>EVENTS</span>
+                    </Link>
+                </li>
+
                 <li>
                     <Link
                         to="/user/about"
@@ -36,14 +46,15 @@ const Sidebar = () => {
 
                 <li>
                     <Link
-                        to="/user/events"
+                        to="/user/CreateEvent"
                         className={`nav-link ${location.pathname === '/events' ? 'active' : ''} ${isCollapsed ? 'hide-text' : ''}`}
                     >
                         <FontAwesomeIcon icon={faCog} /> {/* Events */}
-                        <span className={isCollapsed ? 'hide-text' : ''}>EVENTS</span>
+                        <span className={isCollapsed ? 'hide-text' : ''}>CREATEVENT</span>
                     </Link>
                 </li>
 
+                
                 <li>
                     <Link
                         to="/user/ContactUs"

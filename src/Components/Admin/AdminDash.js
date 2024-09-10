@@ -14,14 +14,15 @@ const AdminDash = () => {
   const [loading, setLoading] = useState(true);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [editEvent, setEditEvent] = useState(null);
+  const [image, setImage] = useState(null); // State for image upload
 
   // Utility function to fetch resources
   const fetchResource = async (url, config) => {
     try {
-      const response = await axios.get(url, config);
-      return response.data;
+      const { data } = await axios.get(url, config);
+      return data;
     } catch (err) {
-      console.error('Error fetching resource:', err); 
+      console.error('Error fetching resource:', err);
       if (err.response && err.response.status === 401) {
         setError('Unauthorized access. Please check your authentication token.');
       } else {
@@ -65,7 +66,7 @@ const AdminDash = () => {
         console.log('Fetched Users:', usersResponse); // Log the response for debugging
         setUsers(usersResponse);
       } catch (err) {
-        console.error('Error fetching data:', err); // More detailed logging
+        console.error('Error fetching data:', err);
         setError('Error fetching data: ' + err.message);
       } finally {
         setLoading(false);
@@ -134,6 +135,33 @@ const AdminDash = () => {
     }
   };
 
+  const handleImageUpload = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleUploadImage = async () => {
+    const formData = new FormData();
+    formData.append('image', image);
+
+    const token = localStorage.getItem('authToken');
+    if (!token) throw new Error('No authentication token found.');
+
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    try {
+      await axios.post('http://localhost:4000/api/upload', formData, config);
+      toast.success('Image uploaded successfully');
+      // Handle the new image URL or update event as needed
+    } catch (err) {
+      toast.error('Error uploading image: ' + err.message);
+    }
+  };
+
   return (
     <div className="container">
       <h3 className="heading">Admin Dashboard</h3>
@@ -151,6 +179,7 @@ const AdminDash = () => {
                 <th>Location</th>
                 <th>Content</th>
                 <th>Price</th>
+                <th>Image</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -161,6 +190,13 @@ const AdminDash = () => {
                   <td>{event.location}</td>
                   <td>{event.content}</td>
                   <td>{event.price}</td>
+                  <td>
+                    {event.image ? (
+                      <img src={`http://localhost:4000/uploads/${event.image}`} alt={event.title} style={{ width: '100px' }} />
+                    ) : (
+                      'No Image'
+                    )}
+                  </td>
                   <td>
                     <div className="actionsContainer">
                       <button onClick={() => handleViewEvent(event)}>View</button>
@@ -177,32 +213,32 @@ const AdminDash = () => {
 
       {/* Manage Users Section */}
       <div className="manageSection">
-  <h3 className="sectionHeading">Manage Users</h3>
-  <div className="tableContainer">
-    <table className="table">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Gender</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {users.map((user) => (
-          <tr key={user._id}>
-            <td>{user.firstname}</td>
-            <td>{user.lastname}</td>
-            <td>{user.gender}</td>
-            <td>
-              <button onClick={() => handleDeleteUser(user._id)}>Delete</button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
+        <h3 className="sectionHeading">Manage Users</h3>
+        <div className="tableContainer">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user._id}>
+                  <td>{user.firstname}</td>
+                  <td>{user.lastname}</td>
+                  <td>{user.gender}</td>
+                  <td>
+                    <button onClick={() => handleDeleteUser(user._id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
       {/* View Event Modal */}
       {selectedEvent && (
@@ -211,6 +247,9 @@ const AdminDash = () => {
           <p>{selectedEvent.content}</p>
           <p>Location: {selectedEvent.location}</p>
           <p>Price: {selectedEvent.price}</p>
+          {selectedEvent.image && (
+            <img src={`http://localhost:4000/uploads/${selectedEvent.image}`} alt={selectedEvent.title} style={{ width: '100px' }} />
+          )}
           <button onClick={() => setSelectedEvent(null)}>Close</button>
         </Modal>
       )}
@@ -238,6 +277,11 @@ const AdminDash = () => {
             value={editEvent.price}
             onChange={(e) => setEditEvent({ ...editEvent, price: e.target.value })}
           />
+          <input
+            type="file"
+            onChange={handleImageUpload}
+          />
+          <button onClick={handleUploadImage}>Upload Image</button>
           <button onClick={handleSaveEvent}>Save Changes</button>
           <button onClick={() => setEditEvent(null)}>Cancel</button>
         </Modal>

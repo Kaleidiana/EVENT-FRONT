@@ -7,6 +7,7 @@ import About from './Components/About';
 import AdminDash from './Components/Admin/AdminDash';
 import Events from './Components/Events';
 import NotFound from './Components/NotFound';
+import CreateEvent from './Components/CreateEvent';
 import ContactUs from './Components/ContactUs';
 import AdminLogin from './Components/Admin/AdminLogin';
 import AdminLayout from './Components/Admin/AdminLayout';
@@ -27,6 +28,7 @@ function App() {
             <Layout />}>
                 <Route path="/user/about" element={<About />} />
                 <Route path="/user/events" element={<Events />} />
+                <Route path="/user/CreateEvent" element={<CreateEvent />} />
                 <Route path="/user/contactus" element={<ContactUs />} />
                 
                 <Route path="/user/notfound" element={<NotFound />} />

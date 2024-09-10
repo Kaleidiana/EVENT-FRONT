@@ -57,7 +57,7 @@ const Register = () => {
           },
         });
         setTimeout(() => {
-          navigate('/sidebar'); // Redirect to login page after successful registration
+          navigate('/user/events'); // Redirect to login page after successful registration
         }, 2000); // Delay to show toast message
       }
     } catch (error) {
