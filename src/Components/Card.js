@@ -15,11 +15,9 @@ const Card = ({ title, image, content, ticket, location, event }) => (
     <p className="card-location">Location: {location}</p>
     <p className="card-price">Ticket: {ticket}</p>
     <Link
-      to={{
-        pathname: `/booking/${event._id}`,
-        state: { event }, // Pass event details to the Booking component
-      }}
-      className="view-button" // Use the same class name for styling
+      to={`/user/booking/${event._id}`} // Ensure this matches your route pattern
+      state={{ event }} // Pass event details to the Booking component
+      className="view-button"
     >
       BOOK
     </Link>

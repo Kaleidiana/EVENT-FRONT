@@ -22,25 +22,18 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        
-        {/* User routes */}
-        <Route path="/user/" element={<Layout />}>
-          <Route path="/user/about" element={<About />} />
-          <Route path="/user/events" element={<Events />} />
-          <Route path="/user/CreateEvent" element={<CreateEvent />} />
-          <Route path="/user/contactus" element={<ContactUs />} />
-          <Route path="/user/notfound" element={<NotFound />} />
-          
-          {/* Add Booking route under the /user/ path */}
-          <Route path="/user/booking/:eventId" element={<Booking />} /> {/* New Booking route */}
+        <Route path="/user" element={<Layout />}>
+          <Route path="about" element={<About />} />
+          <Route path="events" element={<Events />} />
+          <Route path="createevent" element={<CreateEvent />} />
+          <Route path="contactus" element={<ContactUs />} />
+          <Route path="notfound" element={<NotFound />} />
+          <Route path="booking/:eventId" element={<Booking />} /> {/* Correct route path */}
         </Route>
-
-        {/* Admin routes */}
         <Route path="adminlogin" element={<AdminLogin />} />
-        <Route path="/admin/" element={<AdminLayout />}>
-          <Route path="/admin/admindash" element={<AdminDash />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="admindash" element={<AdminDash />} />
         </Route>
-
       </Routes>
     </Router>
   );
