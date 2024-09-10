@@ -20,10 +20,9 @@ const Events = () => {
         setLoading(false);
       }
     };
-  
+
     fetchEvents();
   }, []);
-  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -32,15 +31,15 @@ const Events = () => {
     <div className="events">
       <h1 className="evv">EVENTS</h1>
       <div className="card-container">
-        {cards.map(card => (
+        {cards.map((card) => (
           <Card 
             key={card._id} 
             title={card.title} 
             image={card.image} 
             content={card.content}
             ticket={card.price}
-            location={card.location} 
-            // onView removed because it's not used
+            location={card.location}
+            event={card} // Pass the entire event object
           />
         ))}
       </div>

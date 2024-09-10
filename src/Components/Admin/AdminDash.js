@@ -15,6 +15,7 @@ const AdminDash = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [editEvent, setEditEvent] = useState(null);
   const [image, setImage] = useState(null); // State for image upload
+  const [imagePreview, setImagePreview] = useState(null); // Preview of uploaded image
 
   // Utility function to fetch resources
   const fetchResource = async (url, config) => {
@@ -78,17 +79,19 @@ const AdminDash = () => {
 
   // Function to handle deleting an event
   const handleDeleteEvent = async (eventId) => {
-    const token = localStorage.getItem('authToken');
-    if (!token) throw new Error('No authentication token found.');
+    if (window.confirm('Are you sure you want to delete this event?')) {
+      const token = localStorage.getItem('authToken');
+      if (!token) throw new Error('No authentication token found.');
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
-    await handleDeleteResource('http://localhost:4000/api/events', eventId, config);
-    setEvents(events.filter((event) => event._id !== eventId));
+      await handleDeleteResource('http://localhost:4000/api/events', eventId, config);
+      setEvents(events.filter((event) => event._id !== eventId));
+    }
   };
 
   // Function to handle deleting a user
@@ -136,7 +139,15 @@ const AdminDash = () => {
   };
 
   const handleImageUpload = (e) => {
-    setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    setImage(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleUploadImage = async () => {
@@ -277,6 +288,7 @@ const AdminDash = () => {
             value={editEvent.price}
             onChange={(e) => setEditEvent({ ...editEvent, price: e.target.value })}
           />
+          {imagePreview && <img src={imagePreview} alt="Preview" style={{ width: '100px', height: 'auto' }} />}
           <input
             type="file"
             onChange={handleImageUpload}
