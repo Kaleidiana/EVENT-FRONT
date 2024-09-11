@@ -23,8 +23,8 @@ const About = () => {
 
 const styles = {
   container: {
-    padding: '20px',
-    maxWidth: '800px',
+    // padding: '20px',
+    maxWidth: '100%',
     margin: '0 auto',
     borderRadius: '8px',
   },
@@ -36,7 +36,6 @@ const styles = {
     marginBottom: '24px',
   },
   paragraph: {
-    fontSize: '20px',
     fontFamily: 'Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif',
     color: 'black',
     fontWeight: 'bold',
