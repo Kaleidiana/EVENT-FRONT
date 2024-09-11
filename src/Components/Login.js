@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // Importing icons
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
   const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
@@ -15,6 +17,10 @@ function Login() {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Toggle the password visibility state
   };
 
   const handleLogin = async (event) => {
@@ -74,7 +80,6 @@ function Login() {
       });
     }
   };
-  
 
   return (
     <div className="login-container">
@@ -92,13 +97,28 @@ function Login() {
         </div>
         <div>
           <label>Password:</label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
+          <div style={{ position: 'relative' }}>
+            <input
+              type={showPassword ? 'text' : 'password'} // Conditional type for input
+              placeholder="Enter Password"
+              value={password}
+              onChange={handlePasswordChange}
+              required
+              style={{ paddingRight: '7px' }} // Space for the eye icon
+            />
+            <FontAwesomeIcon
+              icon={showPassword ? faEyeSlash : faEye} // Eye icon based on state
+              onClick={togglePasswordVisibility}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                color: 'grey',
+              }}
+            />
+          </div>
         </div>
         <button type="submit">Login</button>
       </form>

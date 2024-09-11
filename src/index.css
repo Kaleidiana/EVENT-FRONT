@@ -1,3 +1,4 @@
+
 /* Sidebar Styles */
 .sidebar {
   background-color: #070144;
@@ -98,6 +99,7 @@
 }
 .layout {
   display: flex;
+  margin-left: 0;
 }
 
 
@@ -197,6 +199,7 @@
   }
   .main-content {
     margin-left: 80px; /* Adjust margin for smaller screens */
+    overflow: hidden;
   }
 }
 
@@ -493,7 +496,6 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 1px;
   overflow: hidden;
-  margin-right: 60px !important;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #d4d1d1af;
 }
@@ -629,9 +631,7 @@ html, body {
   background-color: #f9f9f9;
   text-align: center;
 }
-.userss{
-  margin-left: 70px;
-}
+
 /*/
 /* Home.css */
 /* Add styles for the navigation */
@@ -1054,6 +1054,7 @@ html, body {
 /* General Container */
 .container {
   max-width: 82%;
+  overflow: hidden;
   margin: 4px auto;
   padding: 10px;
   background-color: #f9f9f9;
@@ -1215,6 +1216,9 @@ html, body {
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 .events {
